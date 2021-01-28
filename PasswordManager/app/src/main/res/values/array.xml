@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="HeaderChoice">
+        <item>フォルダから画像を選択</item>
+        <item>ヘッダー画像を削除</item>
+    </string-array>
+
+    <string-array name="HeaderChoice2">
+        <item>フォルダから画像を選択</item>
+        <item>ヘッダーカラーを変更</item>
+    </string-array>
+
+    <string-array name="TitleEdit">
+        <item>名前を変更</item>
+        <item>タイトルヘッダー画像登録</item>
+        <item>削除</item>
+    </string-array>
+
+    <string-array name="password_array">
+        <item>英字と数字</item>
+        <item>英字と数字と記号</item>
+        <item>数字のみ</item>
+
+    </string-array>
+
+
+</resources>

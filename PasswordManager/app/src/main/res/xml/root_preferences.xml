@@ -1,0 +1,116 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="アカウント情報登録">
+
+        <SwitchPreference
+            app:defaultValue="true"
+            app:key="SkipChoiceAccount"
+            app:summaryOn="アカウント選択画面を常に経由して情報を表示します。"
+            app:summaryOff="アカウント名を空欄及び非表示で登録したアカウント情報のアカウント選択画面をスキップします。同一タイトルでアカウントが2つ以上登録されている場合はスキップしません。"
+            app:title="アカウント選択" />
+
+        <SwitchPreference
+            app:defaultValue="false"
+            app:key="Validation"
+            app:summaryOff="アカウント登録時に入力フィールドの空欄と書式をチェックしません。"
+            app:summaryOn="アカウント登録時にパスワード及びメールアドレスの入力フィールドの空欄とメールアドレスの書式をチェックします。エラーが存在する場合は登録ができません。"
+            app:title="入力チェック" />
+
+        <SwitchPreference
+            app:defaultValue="false"
+            app:key="Label"
+            app:summaryOff="アカウント情報登録画面を開くタイミングでラベルを初期設定に戻します。"
+            app:summaryOn="アカウント情報登録画面のラベルを前回変更した設定で保存します。"
+            app:title="ラベル設定を保存" />
+
+        <SwitchPreference
+            app:defaultValue="false"
+            app:key="AutoName"
+            app:summaryOff="タイトル及びアカウント名を空欄で登録した場合に空欄のまま登録します。"
+            app:summaryOn="タイトル及びアカウント名を空欄で登録した場合に自動的に重複しない規定の名前に変更します。"
+            app:title="自動名前変更" />
+
+        <SwitchPreference
+            app:defaultValue="true"
+            app:key="URLAutoComplete"
+            app:summaryOff="複数アカウント追加時のURL入力欄にURLを自動的に入力しません。"
+            app:summaryOn="複数アカウント追加時のURL入力欄に既に登録済みのURLを自動的に入力します。"
+            app:title="URL予測入力" />
+
+        <SwitchPreference
+            app:defaultValue="false"
+            app:key="PassAutoComplete"
+            app:summaryOff="ランダムパスワードを自動的に入力しません。"
+            app:summaryOn="アカウント情報追加時のパスワード入力欄にランダムパスワードを生成して自動的に入力します。"
+            app:title="ランダムパスワード自動入力" />
+
+        <SeekBarPreference
+            app:defaultValue="15"
+            app:key="PasswordLength"
+            app:summary="ランダムパスワード生成時の初期文字数を設定します。"
+            app:title="ランダムパスワードの文字数" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="セキュリティ">
+        <SwitchPreference
+            app:defaultValue="false"
+            app:key="ShowPassword"
+            app:summaryOff="第三者に見られるリスクを減らすためにパスワードをマスクします。"
+            app:summaryOn="パスワードをマスクせずにそのまま表示します。セキュリティリスクが増加するので注意してください。"
+            app:title="パスワード表示" />
+        <SwitchPreference
+            app:key="BioAuth"
+            app:summaryOff="起動時ログインに生体認証を使用しません。"
+            app:summaryOn="起動時ログインに生体認証を使用します。端末が生体認証をサポートしていない場合、自動的にオフになります。"
+            app:title="生体認証ログイン" />
+        <Preference
+            app:key="PIN"
+            app:summary="ログイン時に使用するPINの変更を行います。"
+            app:title="PIN変更"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="アカウント情報管理">
+        <Preference
+            app:key="Sync"
+            app:summary="DropBoxクラウドサービスに接続してアカウント情報をバックアップ・リストアします。DropBoxアカウントが必要になります。"
+            app:title="DropBoxクラウド" />
+
+        <SwitchPreference
+            app:defaultValue="false"
+            app:key="AutoSync"
+            app:summaryOff="自動クラウドバックアップを使用しません。"
+            app:summaryOn="アカウント情報を追加・編集したタイミングで自動的にDropBoxクラウドにアカウント情報をバックアップします。あらかじめDropBoxクラウドサービスと接続しておく必要があります。"
+            app:title="自動クラウドバックアップ" />
+
+
+        <Preference
+            app:key="Alldelete"
+            app:summary="登録されているアカウント情報を全て削除します。この操作は元に戻せないため注意してください。"
+            app:title="アカウント情報全削除" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="テーマ">
+        <Preference
+            app:key="AccentColor"
+            app:summary="テーマカラーを変更します。変更を反映するためにアプリケーションが再起動します。"
+            app:title="テーマカラー変更"
+            />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title = "その他">
+        <SwitchPreference
+            app:defaultValue="true"
+            app:key="ShareOption"
+            app:summaryOn="アカウント情報の項目共有時にラベルを含めて共有します。"
+            app:summaryOff="アカウント情報の項目共有時にラベルを含めずに共有します。"
+            app:title="アカウント情報ラベル共有設定"
+            />
+
+    </PreferenceCategory>
+
+
+
+</PreferenceScreen>

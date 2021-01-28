@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_search"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="Search"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="collapseActionView|always"/>
+
+    <item
+        android:icon="@drawable/ic_baseline_sort_24"
+        android:id="@+id/sort"
+        android:title="並べ替え"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:icon="@drawable/ic_baseline_photo_24"
+        android:id="@+id/BGedit"
+        android:title="壁紙設定"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:icon="@drawable/ic_baseline_tune_24"
+        android:id="@+id/other"
+        android:title="アプリ設定"
+        app:showAsAction="ifRoom">
+        <!-- "file" submenu -->
+    </item>
+</menu>

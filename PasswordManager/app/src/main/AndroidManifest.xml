@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.accountmanager">
+
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/NoActionBar"
+        android:fullBackupContent="@xml/backup_rules">
+        <activity
+            android:configChanges="orientation|screenSize"
+            android:name=".HeadingEditActivity" />
+        <activity
+            android:configChanges="orientation|screenSize"
+            android:name=".ColorPalett" />
+        <activity
+            android:configChanges="orientation|screenSize"
+            android:name=".CropImage" />
+        <activity
+            android:name="com.dropbox.core.android.AuthActivity"
+            android:configChanges="orientation|keyboard"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="db-mb56hamy5tjecjd" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:configChanges="orientation|screenSize"
+            android:name=".CloudSync" />
+        <activity
+            android:configChanges="orientation|screenSize"
+            android:name=".OtherSettings"
+            android:label="@string/title_activity_other_settings" />
+        <activity
+            android:configChanges="orientation|screenSize"
+            android:name=".Tutorial"
+            android:theme="@style/CustomWelcomeScreenTheme" />
+        <activity
+            android:configChanges="orientation|screenSize"
+            android:name=".Passcode"
+            android:label="@string/app_name"
+            android:theme="@style/SplashTheme"
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:configChanges="orientation|screenSize"
+            android:name=".AddMultiAccount"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:configChanges="orientation|screenSize"
+            android:name=".MultiAccountList"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
+        <activity
+            android:configChanges="orientation|screenSize"
+            android:name=".AccountInfo" />
+        <activity
+            android:configChanges="orientation|screenSize"
+            android:name=".CreateData"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:configChanges="orientation|screenSize"
+            android:name=".MainActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <service android:name=".AsyncWork"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
+    </application>
+
+</manifest>

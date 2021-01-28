@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#212121</color>
+    <color name="colorPrimaryDark">#212121</color>
+    <color name="colorAccent">#FF60A8</color>
+    <color name="colorText">#ffffff</color>
+    <color name="colorUnderLineNormal">#C0C0C0</color>
+    <color name="colorUnderLineActivated">#ffffff</color>
+    <color name="InfoText">#72FFFFFF</color>
+
+    <color name="TutorialBackground1">#00BFA5</color>
+    <color name="TutorialBackground2">#C51162</color>
+    <color name="TutorialBackground3">#304FFE</color>
+    <color name="TutorialBackground4">#FF6D00</color>
+    <color name="TutorialBackground5">#0091EA</color>
+    <color name="TutorialBackground6">#6200EA</color>
+    <color name="TutorialBackground7">#DD2C00</color>
+
+
+    <color name="PinkAccent">#FF60A8</color>
+    <color name="GreenAccent">#64DD17</color>
+    <color name="OrangeAccent">#FF6D00</color>
+    <color name="CyanAccent">#00B8D4</color>
+
+
+</resources>

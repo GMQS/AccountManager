@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/share"
+        android:icon="@drawable/ic_baseline_share_24"
+        android:title="share"
+        app:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/single3"
+        android:icon="@drawable/ic_baseline_vpn_key_24"
+        android:title="ランダムパスワード生成"
+        app:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/single2"
+        android:icon = "@drawable/ic_baseline_delete_24"
+        android:title="削除"
+        app:showAsAction = "ifRoom"/>
+
+    <item android:id="@+id/HeadingEdit"
+        android:title="ラベル編集"
+        app:showAsAction = "never"/>
+    <!-- "file" submenu -->
+</menu>

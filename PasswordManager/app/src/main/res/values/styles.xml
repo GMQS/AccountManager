@@ -1,0 +1,345 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#212121</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorText</item>
+    </style>
+
+
+    <!-- メインテーマ -->
+
+    <!-- アクションバー無しのテーマ -->
+    <style name="NoActionBar" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textColorSecondary">#B2FFFFFF</item>
+        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
+        <item name="android:alertDialogTheme">@style/BlackDialog</item>
+        <item name="alertDialogTheme">@style/BlackDialog</item>
+        <item name="android:editTextColor">@color/PinkAccent</item>
+    </style>
+
+    <!-- アクションバー無しのテーマ シアン-->
+    <style name="NoActionBarCyan" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">#00B8D4</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textColorSecondary">#B2FFFFFF</item>
+        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
+        <item name="android:alertDialogTheme">@style/BlackDialogCyan</item>
+        <item name="alertDialogTheme">@style/BlackDialogCyan</item>
+        <item name="android:editTextColor">@color/CyanAccent</item>
+    </style>
+
+    <!-- アクションバー無しのテーマ オレンジ-->
+    <style name="NoActionBarOrange" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">#FF6D00</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textColorSecondary">#B2FFFFFF</item>
+        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
+        <item name="android:alertDialogTheme">@style/BlackDialogOrange</item>
+        <item name="alertDialogTheme">@style/BlackDialogOrange</item>
+        <item name="android:editTextColor">@color/OrangeAccent</item>
+
+    </style>
+
+    <!-- アクションバー無しのテーマ グリーン-->
+    <style name="NoActionBarGreen" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">#64DD17</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textColorSecondary">#B2FFFFFF</item>
+        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
+        <item name="android:alertDialogTheme">@style/BlackDialogGreen</item>
+        <item name="alertDialogTheme">@style/BlackDialogGreen</item>
+        <item name="android:editTextColor">@color/GreenAccent</item>
+    </style>
+
+    <!-- ここまで -->
+
+
+    <!-- アクションバー無しのテーマ インフォ画面用-->
+    <style name="NoActionBar2" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textColorSecondary">#B2FFFFFF</item>
+        <item name="android:windowAnimationStyle">@style/AnimationActivity2</item>
+        <item name="android:alertDialogTheme">@style/BlackDialog</item>
+        <item name="alertDialogTheme">@style/BlackDialog</item>
+        <item name="android:editTextColor">@color/PinkAccent</item>
+    </style>
+
+    <!-- アクションバー無しのテーマ シアン インフォ画面用-->
+    <style name="NoActionBarCyan2" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">#00B8D4</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textColorSecondary">#B2FFFFFF</item>
+        <item name="android:windowAnimationStyle">@style/AnimationActivity2</item>
+        <item name="android:alertDialogTheme">@style/BlackDialogCyan</item>
+        <item name="alertDialogTheme">@style/BlackDialogCyan</item>
+        <item name="android:editTextColor">@color/CyanAccent</item>
+    </style>
+
+    <!-- アクションバー無しのテーマ オレンジ インフォ画面用-->
+    <style name="NoActionBarOrange2" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">#FF6D00</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textColorSecondary">#B2FFFFFF</item>
+        <item name="android:windowAnimationStyle">@style/AnimationActivity2</item>
+        <item name="android:alertDialogTheme">@style/BlackDialogOrange</item>
+        <item name="alertDialogTheme">@style/BlackDialogOrange</item>
+        <item name="android:editTextColor">@color/OrangeAccent</item>
+
+    </style>
+
+    <!-- アクションバー無しのテーマ グリーン インフォ画面用-->
+    <style name="NoActionBarGreen2" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">#64DD17</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textColorSecondary">#B2FFFFFF</item>
+        <item name="android:windowAnimationStyle">@style/AnimationActivity2</item>
+        <item name="android:alertDialogTheme">@style/BlackDialogGreen</item>
+        <item name="alertDialogTheme">@style/BlackDialogGreen</item>
+        <item name="android:editTextColor">@color/GreenAccent</item>
+    </style>
+
+
+    <!--スプラッシュテーマ-->
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+
+
+    <style name="ToolbarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textColorSecondary">#FFFFFF</item>
+    </style>
+
+    <style name="DeleteLine">
+        <item name="colorControlNormal">#00C0C0C0</item>
+    </style>
+
+    <style name="GrayOutLine">
+        <item name="colorControlNormal">#7E7E7E</item>
+    </style>
+
+    <style name="EditTextPink">
+        <item name="colorControlNormal">#00C0C0C0</item>
+        <item name="colorControlActivated">@color/PinkAccent</item>
+        <item name="android:textColorHighlight">#4DC51162</item>
+        <item name="android:textColorHint">@color/colorUnderLineActivated</item>
+        <item name="android:textColor">@color/PinkAccent</item>
+        <item name="android:textCursorDrawable">@color/PinkAccent</item>
+    </style>
+
+    <style name="EditTextCyan">
+        <item name="colorControlNormal">#00C0C0C0</item>
+        <item name="colorControlActivated">@color/CyanAccent</item>
+        <item name="android:textColorHighlight">#4D1186C5</item>
+        <item name="android:textColorHint">@color/colorUnderLineActivated</item>
+        <item name="android:textColor">@color/CyanAccent</item>
+        <item name="android:textCursorDrawable">@color/CyanAccent</item>
+    </style>
+
+    <style name="EditTextOrange">
+        <item name="colorControlNormal">#00C0C0C0</item>
+        <item name="colorControlActivated">@color/OrangeAccent</item>
+        <item name="android:textColorHighlight">#4DC55911</item>
+        <item name="android:textColorHint">@color/colorUnderLineActivated</item>
+        <item name="android:textColor">@color/OrangeAccent</item>
+        <item name="android:textCursorDrawable">@color/OrangeAccent</item>
+    </style>
+
+    <style name="EditTextGreen">
+        <item name="colorControlNormal">#00C0C0C0</item>
+        <item name="colorControlActivated">@color/GreenAccent</item>
+        <item name="android:textColorHighlight">#4D64DD17</item>
+        <item name="android:textColorHint">@color/colorUnderLineActivated</item>
+        <item name="android:textColor">@color/GreenAccent</item>
+        <item name="android:textCursorDrawable">@color/GreenAccent</item>
+    </style>
+
+    <!-- 登録フォームのデザイン -->
+    <!-- TextInputLayoutのスタイル -->
+    <style name="AppTheme.Design.TextInputLayout" parent="Widget.Design.TextInputLayout">
+        <item name="android:textColorHint">#FFFFFF</item><!-- 何も入力してないとき入力フォーム内のHintの色 -->
+        <item name="colorControlNormal">#FFFFFF</item><!-- 通常時EditTextの下線 -->
+        <item name="colorControlActivated">#FF60A8</item><!-- フォーカス時の下線の色 -->
+    </style>
+
+    <!-- hintのスタイル -->
+    <style name="AppTheme.Design.TextAppearance.Design.Hint" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">15sp</item><!-- 上の方のhintの表示サイズ -->
+        <item name="android:textColor">#FFFFFF</item><!--  上の方のhintの表示の色 -->
+    </style>
+
+    <!-- エラーのスタイル -->
+    <style name="AppTheme.Design.TextAppearance.Design.Error" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">12sp</item><!-- errorの表示サイズ -->
+        <item name="android:textColor">#DD2C00</item><!--  errorの表示の色.error時の下線の色でもある -->
+    </style>
+
+
+    <!-- ログインフォームのデザイン -->
+    <!-- hintのスタイル -->
+    <style name="AppTheme2.Design.TextAppearance.Design.Hint" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">20sp</item><!-- 上の方のhintの表示サイズ -->
+        <item name="android:textColor">#FFFFFF</item><!--  上の方のhintの表示の色 -->
+    </style>
+
+    <!-- エラーのスタイル -->
+    <style name="AppTheme2.Design.TextAppearance.Design.Error" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">18sp</item><!-- errorの表示サイズ -->
+        <item name="android:textColor">#DD2C00</item><!--  errorの表示の色.error時の下線の色でもある -->
+    </style>
+
+
+    <style name="Sample.InputLayout.Activate" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textColor">#0000FF</item>
+    </style>
+
+    <style name="EditText.Filled" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="hintTextAppearance">@style/Sample.InputLayout.Activate</item>
+    </style>
+
+    <style name="customDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:backgroundDimAmount">0.0</item>
+    </style>
+
+    <style name="Animation" parent="AppTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
+    </style>
+
+    <!-- Activityをアニメーションさせるためのstyle default-->
+    <style name="AnimationActivity" parent="android:Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/left_slide_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/dropdown_exit</item>
+        <item name="android:activityCloseEnterAnimation">@anim/flowup_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/left_slide_out</item>
+    </style>
+
+    <!-- Activityをアニメーションさせるためのstyle  under slide-->
+    <style name="AnimationActivity2" parent="android:Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/under_silde_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/dropdown_exit</item>
+        <item name="android:activityCloseEnterAnimation">@anim/flowup_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/under_slide_out</item>
+    </style>
+
+
+
+    <style name="CustomWelcomeScreenTheme" parent="WelcomeScreenTheme">
+        <!-- Done/skip button text -->
+        <item name="welcomeButtonSkipText">スキップ</item>
+        <item name="welcomeButtonDoneText">始める</item>
+    </style>
+
+
+    <style name="Dark" parent="Theme.AppCompat">
+        <item name="android:textColor">@color/colorText</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="ProgressDialogPink" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="colorAccent">@color/PinkAccent</item>
+        <item name="android:background">#212121</item>
+        <item name="dialogCornerRadius">12dp</item>
+    </style>
+
+    <style name="ProgressDialogOrange" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="colorAccent">@color/OrangeAccent</item>
+        <item name="android:background">#212121</item>
+        <item name="dialogCornerRadius">12dp</item>
+    </style>
+
+    <style name="ProgressDialogGreen" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="colorAccent">@color/GreenAccent</item>
+        <item name="android:background">#212121</item>
+        <item name="dialogCornerRadius">12dp</item>
+    </style>
+
+    <style name="ProgressDialogCyan" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="colorAccent">@color/CyanAccent</item>
+        <item name="android:background">#212121</item>
+        <item name="dialogCornerRadius">12dp</item>
+    </style>
+
+
+    <style name="BlackDialog" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:textColor">@color/PinkAccent</item>
+        <item name="colorAccent">@color/PinkAccent</item>
+        <item name="dialogCornerRadius">12dp</item>
+    </style>
+
+    <style name="BlackDialogCyan" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:textColor">#00B8D4</item>
+        <item name="colorAccent">#00B8D4</item>
+        <item name="dialogCornerRadius">12dp</item>
+    </style>
+
+    <style name="BlackDialogPurple" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:textColor">#6200EA</item>
+        <item name="colorAccent">#6200EA</item>
+        <item name="dialogCornerRadius">12dp</item>
+    </style>
+
+    <style name="BlackDialogOrange" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:textColor">#FF6D00</item>
+        <item name="colorAccent">#FF6D00</item>
+        <item name="dialogCornerRadius">12dp</item>
+    </style>
+
+    <style name="BlackDialogGreen" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:textColor">#64DD17</item>
+        <item name="colorAccent">#64DD17</item>
+        <item name="dialogCornerRadius">12dp</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <style name="CollapsedAppBar" parent="@android:style/TextAppearance">
+        <item name="android:textSize">28sp</item>
+    </style>
+
+
+</resources>

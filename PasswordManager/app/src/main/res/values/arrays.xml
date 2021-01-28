@@ -1,0 +1,28 @@
+<resources>
+    <!-- Reply Preference -->
+
+    <integer-array name="pref_values" >
+        <item>@style/NoActionBar</item>
+        <item>@style/NoActionBarCyan</item>
+        <item>@style/NoActionBarOrange</item>
+        <item>@style/NoActionBarGreen</item>
+    </integer-array>
+    <string-array name="pref_options" >
+        <item>ピンク</item>
+        <item>シアン</item>
+        <item>オレンジ</item>
+        <item>ライトグリーン</item>
+    </string-array>
+
+    <string-array name="BioAuth">
+        <item>PINでログイン</item>
+        <item>生体認証でログイン</item>
+    </string-array>
+
+    <string-array name="BioAuth_value">
+        <item>PIN</item>
+        <item>BIO</item>
+    </string-array>
+
+
+</resources>

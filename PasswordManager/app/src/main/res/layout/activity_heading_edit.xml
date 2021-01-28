@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/wallpaper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:scaleType="centerCrop"
+        app:srcCompat="@color/colorPrimaryDark" />
+
+    <ImageView
+        android:id="@+id/defaultfilter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:scaleType="centerCrop"
+        android:background="#4D000000"/>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginTop="?attr/actionBarSize">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ConstInnerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="32dp">
+
+            <CheckBox
+                android:id="@+id/checkBox_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:checked="true"
+                android:enabled="false"
+                android:text="表示"
+                app:layout_constraintBottom_toBottomOf="@+id/TitleLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/TitleLabel" />
+
+            <CheckBox
+                android:id="@+id/checkBox_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:text="表示"
+                android:checked="true"
+                app:layout_constraintBottom_toBottomOf="@+id/AccountLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/AccountLabel" />
+
+            <CheckBox
+                android:id="@+id/checkBox_mail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:text="表示"
+                android:checked="true"
+                app:layout_constraintBottom_toBottomOf="@+id/MailLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/MailLabel" />
+
+            <CheckBox
+                android:id="@+id/checkBox_pass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:text="表示"
+                android:checked="true"
+                app:layout_constraintBottom_toBottomOf="@+id/PassLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/PassLabel" />
+
+            <CheckBox
+                android:id="@+id/checkBox_url"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:text="表示"
+                android:checked="true"
+                app:layout_constraintBottom_toBottomOf="@+id/UrlLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/UrlLabel" />
+
+            <CheckBox
+                android:id="@+id/checkBox_memo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:text="表示"
+                android:checked="true"
+                app:layout_constraintBottom_toBottomOf="@+id/MemoLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/MemoLabel" />
+
+            <EditText
+                android:id="@+id/TitleLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="32dp"
+                android:inputType="textMultiLine|textPersonName"
+                android:textColor="#7E7E7E"
+                android:textSize="18sp"
+                android:text="タイトル"
+                android:enabled="false"
+                android:theme="@style/GrayOutLine"
+                app:layout_constraintEnd_toStartOf="@+id/checkBox_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/AccountLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="32dp"
+                android:inputType="textMultiLine|textPersonName"
+                android:textColor="@color/colorText"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/checkBox_account"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/TitleLabel" />
+
+            <EditText
+                android:id="@+id/MailLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="32dp"
+                android:inputType="textMultiLine|textPersonName"
+                android:textColor="@color/colorText"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/checkBox_mail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/AccountLabel" />
+
+            <EditText
+                android:id="@+id/PassLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="32dp"
+                android:inputType="textMultiLine|textPersonName"
+                android:textColor="@color/colorText"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/checkBox_pass"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/MailLabel" />
+
+            <EditText
+                android:id="@+id/UrlLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="32dp"
+                android:inputType="textMultiLine|textPersonName"
+                android:textColor="@color/colorText"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/checkBox_url"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/PassLabel" />
+
+            <EditText
+                android:id="@+id/MemoLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="32dp"
+                android:inputType="textMultiLine|textPersonName"
+                android:textColor="@color/colorText"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/checkBox_memo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/UrlLabel" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
