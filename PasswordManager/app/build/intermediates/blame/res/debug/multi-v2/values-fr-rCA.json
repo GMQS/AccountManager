@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\PasswordManager\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-fr-rCA\\values-fr-rCA.xml",
+            "outputFile": "D:\\Github\\AccountManager\\PasswordManager\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-fr-rCA\\values-fr-rCA.xml",
             "map": [
                 {
                     "source": "C:\\Users\\GEN\\.gradle\\caches\\transforms-2\\files-2.1\\c69a882613004a67b043dd4c388bf787\\preference-1.1.1\\res\\values-fr-rCA\\values-fr-rCA.xml",

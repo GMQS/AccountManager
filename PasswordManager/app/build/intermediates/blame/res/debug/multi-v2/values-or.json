@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\PasswordManager\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-or\\values-or.xml",
+            "outputFile": "D:\\Github\\AccountManager\\PasswordManager\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-or\\values-or.xml",
             "map": [
                 {
                     "source": "C:\\Users\\GEN\\.gradle\\caches\\transforms-2\\files-2.1\\77532aed9450cf9a64f9388cbb7e6b98\\biometric-1.0.1\\res\\values-or\\values-or.xml",

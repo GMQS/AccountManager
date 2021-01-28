@@ -12,7 +12,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Point;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -142,7 +141,7 @@ public class AccountInfo extends AppCompatActivity {
     private int getWidth;
 
     private File titleHeaderFile;
-    private File headerFile;
+    //private File headerFile;
     private File tmpHeaderFile;
 
 
@@ -197,7 +196,7 @@ public class AccountInfo extends AppCompatActivity {
         getDisplayWidth();
 
         titleHeaderFile = new File(getFilesDir().getPath() + "/" + sendTitle + "_header.jpg");
-        headerFile = new File(getFilesDir().getPath() + "/" + myPic);
+        //headerFile = new File(getFilesDir().getPath() + "/" + myPic);
         tmpHeaderFile = new File(getFilesDir().getPath() + "/tmp_image.jpg");
 
         Bitmap bitmap;

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\PasswordManager\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw720dp-v13\\values-sw720dp-v13.xml",
+            "outputFile": "D:\\Github\\AccountManager\\PasswordManager\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw720dp-v13\\values-sw720dp-v13.xml",
             "map": [
                 {
                     "source": "C:\\Users\\GEN\\.gradle\\caches\\transforms-2\\files-2.1\\4040806f9c36a8ba8e889704a2729968\\jetified-welcome-1.4.1\\res\\values-sw720dp-v13\\values-sw720dp-v13.xml",

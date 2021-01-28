@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\PasswordManager\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-b+es+419\\values-b+es+419.xml",
+            "outputFile": "D:\\Github\\AccountManager\\PasswordManager\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-b+es+419\\values-b+es+419.xml",
             "map": [
                 {
                     "source": "C:\\Users\\GEN\\.gradle\\caches\\transforms-2\\files-2.1\\b495de104db82f7935996ad0a72436d4\\material-1.3.0-beta01\\res\\values-b+es+419\\values-b+es+419.xml",

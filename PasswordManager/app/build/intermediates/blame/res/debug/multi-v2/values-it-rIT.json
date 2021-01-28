@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\PasswordManager\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-it-rIT\\values-it-rIT.xml",
+            "outputFile": "D:\\Github\\AccountManager\\PasswordManager\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-it-rIT\\values-it-rIT.xml",
             "map": [
                 {
                     "source": "C:\\Users\\GEN\\.gradle\\caches\\transforms-2\\files-2.1\\8bbc8a7924f9be5d2fa1af8658e6f3f5\\jetified-colorpicker-1.0.0\\res\\values-it-rIT\\values-it-rIT.xml",

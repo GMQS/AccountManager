@@ -6,31 +6,31 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="16"
-8-->D:\PasswordManager\app\src\main\AndroidManifest.xml
+8-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="30" />
-9-->D:\PasswordManager\app\src\main\AndroidManifest.xml
+9-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
-11-->D:\PasswordManager\app\src\main\AndroidManifest.xml:5:5-72
-11-->D:\PasswordManager\app\src\main\AndroidManifest.xml:5:22-69
+11-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:5:5-72
+11-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:5:22-69
 12    <uses-permission android:name="android.permission.INTERNET" />
-12-->D:\PasswordManager\app\src\main\AndroidManifest.xml:6:5-67
-12-->D:\PasswordManager\app\src\main\AndroidManifest.xml:6:22-64
+12-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:6:5-67
+12-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:6:22-64
 13    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-13-->D:\PasswordManager\app\src\main\AndroidManifest.xml:7:5-80
-13-->D:\PasswordManager\app\src\main\AndroidManifest.xml:7:22-77
+13-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:7:5-80
+13-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:7:22-77
 14
 15    <queries>
-15-->D:\PasswordManager\app\src\main\AndroidManifest.xml:9:5-14:15
+15-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:9:5-14:15
 16        <intent>
-16-->D:\PasswordManager\app\src\main\AndroidManifest.xml:10:9-13:18
+16-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:10:9-13:18
 17            <action android:name="android.intent.action.MAIN" />
-17-->D:\PasswordManager\app\src\main\AndroidManifest.xml:11:13-65
-17-->D:\PasswordManager\app\src\main\AndroidManifest.xml:11:21-62
+17-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:11:13-65
+17-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:11:21-62
 18
 19            <category android:name="android.intent.category.LAUNCHER" />
-19-->D:\PasswordManager\app\src\main\AndroidManifest.xml:12:13-73
-19-->D:\PasswordManager\app\src\main\AndroidManifest.xml:12:23-70
+19-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:12:13-73
+19-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:12:23-70
 20        </intent>
 21    </queries>
 22
@@ -51,168 +51,168 @@
 27-->[androidx.work:work-runtime:2.4.0] C:\Users\GEN\.gradle\caches\transforms-2\files-2.1\3f642644e9b7a6665bbe954d114b7ce8\work-runtime-2.4.0\AndroidManifest.xml:28:22-74
 28
 29    <application
-29-->D:\PasswordManager\app\src\main\AndroidManifest.xml:16:5-94:19
+29-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:16:5-94:19
 30        android:name="androidx.multidex.MultiDexApplication"
 31        android:allowBackup="true"
-31-->D:\PasswordManager\app\src\main\AndroidManifest.xml:17:9-35
+31-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:17:9-35
 32        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 32-->[androidx.core:core:1.3.1] C:\Users\GEN\.gradle\caches\transforms-2\files-2.1\905808b10bc47511b6c6896a37787f2b\core-1.3.1\AndroidManifest.xml:24:18-86
 33        android:debuggable="true"
 34        android:fullBackupContent="@xml/backup_rules"
-34-->D:\PasswordManager\app\src\main\AndroidManifest.xml:23:9-54
+34-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:23:9-54
 35        android:icon="@mipmap/ic_launcher"
-35-->D:\PasswordManager\app\src\main\AndroidManifest.xml:18:9-43
+35-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:18:9-43
 36        android:label="@string/app_name"
-36-->D:\PasswordManager\app\src\main\AndroidManifest.xml:19:9-41
+36-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:19:9-41
 37        android:roundIcon="@mipmap/ic_launcher_round"
-37-->D:\PasswordManager\app\src\main\AndroidManifest.xml:20:9-54
+37-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:20:9-54
 38        android:supportsRtl="true"
-38-->D:\PasswordManager\app\src\main\AndroidManifest.xml:21:9-35
+38-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:21:9-35
 39        android:testOnly="true"
 40        android:theme="@style/NoActionBar" >
-40-->D:\PasswordManager\app\src\main\AndroidManifest.xml:22:9-43
+40-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:22:9-43
 41        <activity
-41-->D:\PasswordManager\app\src\main\AndroidManifest.xml:24:9-26:51
+41-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:24:9-26:51
 42            android:name="com.example.accountmanager.HeadingEditActivity"
-42-->D:\PasswordManager\app\src\main\AndroidManifest.xml:26:13-48
+42-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:26:13-48
 43            android:configChanges="orientation|screenSize" />
-43-->D:\PasswordManager\app\src\main\AndroidManifest.xml:25:13-59
+43-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:25:13-59
 44        <activity
-44-->D:\PasswordManager\app\src\main\AndroidManifest.xml:27:9-29:43
+44-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:27:9-29:43
 45            android:name="com.example.accountmanager.ColorPalett"
-45-->D:\PasswordManager\app\src\main\AndroidManifest.xml:29:13-40
+45-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:29:13-40
 46            android:configChanges="orientation|screenSize" />
-46-->D:\PasswordManager\app\src\main\AndroidManifest.xml:28:13-59
+46-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:28:13-59
 47        <activity
-47-->D:\PasswordManager\app\src\main\AndroidManifest.xml:30:9-32:41
+47-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:30:9-32:41
 48            android:name="com.example.accountmanager.CropImage"
-48-->D:\PasswordManager\app\src\main\AndroidManifest.xml:32:13-38
+48-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:32:13-38
 49            android:configChanges="orientation|screenSize" />
-49-->D:\PasswordManager\app\src\main\AndroidManifest.xml:31:13-59
+49-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:31:13-59
 50        <activity
-50-->D:\PasswordManager\app\src\main\AndroidManifest.xml:33:9-43:20
+50-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:33:9-43:20
 51            android:name="com.dropbox.core.android.AuthActivity"
-51-->D:\PasswordManager\app\src\main\AndroidManifest.xml:34:13-65
+51-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:34:13-65
 52            android:configChanges="orientation|keyboard"
-52-->D:\PasswordManager\app\src\main\AndroidManifest.xml:35:13-57
+52-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:35:13-57
 53            android:launchMode="singleTask" >
-53-->D:\PasswordManager\app\src\main\AndroidManifest.xml:36:13-44
+53-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:36:13-44
 54            <intent-filter>
-54-->D:\PasswordManager\app\src\main\AndroidManifest.xml:37:13-42:29
+54-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:37:13-42:29
 55                <action android:name="android.intent.action.VIEW" />
-55-->D:\PasswordManager\app\src\main\AndroidManifest.xml:38:17-69
-55-->D:\PasswordManager\app\src\main\AndroidManifest.xml:38:25-66
+55-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:38:17-69
+55-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:38:25-66
 56
 57                <category android:name="android.intent.category.BROWSABLE" />
-57-->D:\PasswordManager\app\src\main\AndroidManifest.xml:39:17-78
-57-->D:\PasswordManager\app\src\main\AndroidManifest.xml:39:27-75
+57-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:39:17-78
+57-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:39:27-75
 58                <category android:name="android.intent.category.DEFAULT" />
-58-->D:\PasswordManager\app\src\main\AndroidManifest.xml:40:17-76
-58-->D:\PasswordManager\app\src\main\AndroidManifest.xml:40:27-73
+58-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:40:17-76
+58-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:40:27-73
 59
 60                <data android:scheme="db-mb56hamy5tjecjd" />
-60-->D:\PasswordManager\app\src\main\AndroidManifest.xml:41:17-61
-60-->D:\PasswordManager\app\src\main\AndroidManifest.xml:41:23-58
+60-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:41:17-61
+60-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:41:23-58
 61            </intent-filter>
 62        </activity>
 63        <activity
-63-->D:\PasswordManager\app\src\main\AndroidManifest.xml:44:9-46:41
+63-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:44:9-46:41
 64            android:name="com.example.accountmanager.CloudSync"
-64-->D:\PasswordManager\app\src\main\AndroidManifest.xml:46:13-38
+64-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:46:13-38
 65            android:configChanges="orientation|screenSize" />
-65-->D:\PasswordManager\app\src\main\AndroidManifest.xml:45:13-59
+65-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:45:13-59
 66        <activity
-66-->D:\PasswordManager\app\src\main\AndroidManifest.xml:47:9-50:69
+66-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:47:9-50:69
 67            android:name="com.example.accountmanager.OtherSettings"
-67-->D:\PasswordManager\app\src\main\AndroidManifest.xml:49:13-42
+67-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:49:13-42
 68            android:configChanges="orientation|screenSize"
-68-->D:\PasswordManager\app\src\main\AndroidManifest.xml:48:13-59
+68-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:48:13-59
 69            android:label="@string/title_activity_other_settings" />
-69-->D:\PasswordManager\app\src\main\AndroidManifest.xml:50:13-66
+69-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:50:13-66
 70        <activity
-70-->D:\PasswordManager\app\src\main\AndroidManifest.xml:51:9-54:63
+70-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:51:9-54:63
 71            android:name="com.example.accountmanager.Tutorial"
-71-->D:\PasswordManager\app\src\main\AndroidManifest.xml:53:13-37
+71-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:53:13-37
 72            android:configChanges="orientation|screenSize"
-72-->D:\PasswordManager\app\src\main\AndroidManifest.xml:52:13-59
+72-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:52:13-59
 73            android:theme="@style/CustomWelcomeScreenTheme" />
-73-->D:\PasswordManager\app\src\main\AndroidManifest.xml:54:13-60
+73-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:54:13-60
 74        <activity
-74-->D:\PasswordManager\app\src\main\AndroidManifest.xml:55:9-65:20
+74-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:55:9-65:20
 75            android:name="com.example.accountmanager.Passcode"
-75-->D:\PasswordManager\app\src\main\AndroidManifest.xml:57:13-37
+75-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:57:13-37
 76            android:configChanges="orientation|screenSize"
-76-->D:\PasswordManager\app\src\main\AndroidManifest.xml:56:13-59
+76-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:56:13-59
 77            android:label="@string/app_name"
-77-->D:\PasswordManager\app\src\main\AndroidManifest.xml:58:13-45
+77-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:58:13-45
 78            android:theme="@style/SplashTheme"
-78-->D:\PasswordManager\app\src\main\AndroidManifest.xml:59:13-47
+78-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:59:13-47
 79            android:windowSoftInputMode="adjustPan" >
-79-->D:\PasswordManager\app\src\main\AndroidManifest.xml:60:13-52
+79-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:60:13-52
 80            <intent-filter>
-80-->D:\PasswordManager\app\src\main\AndroidManifest.xml:61:13-64:29
+80-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:61:13-64:29
 81                <action android:name="android.intent.action.MAIN" />
-81-->D:\PasswordManager\app\src\main\AndroidManifest.xml:11:13-65
-81-->D:\PasswordManager\app\src\main\AndroidManifest.xml:11:21-62
+81-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:11:13-65
+81-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:11:21-62
 82
 83                <category android:name="android.intent.category.LAUNCHER" />
-83-->D:\PasswordManager\app\src\main\AndroidManifest.xml:12:13-73
-83-->D:\PasswordManager\app\src\main\AndroidManifest.xml:12:23-70
+83-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:12:13-73
+83-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:12:23-70
 84            </intent-filter>
 85        </activity>
 86        <activity
-86-->D:\PasswordManager\app\src\main\AndroidManifest.xml:68:9-71:58
+86-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:68:9-71:58
 87            android:name="com.example.accountmanager.AddMultiAccount"
-87-->D:\PasswordManager\app\src\main\AndroidManifest.xml:70:13-44
+87-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:70:13-44
 88            android:configChanges="orientation|screenSize"
-88-->D:\PasswordManager\app\src\main\AndroidManifest.xml:69:13-59
+88-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:69:13-59
 89            android:windowSoftInputMode="adjustResize" />
-89-->D:\PasswordManager\app\src\main\AndroidManifest.xml:71:13-55
+89-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:71:13-55
 90        <activity
-90-->D:\PasswordManager\app\src\main\AndroidManifest.xml:72:9-76:20
+90-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:72:9-76:20
 91            android:name="com.example.accountmanager.MultiAccountList"
-91-->D:\PasswordManager\app\src\main\AndroidManifest.xml:74:13-45
+91-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:74:13-45
 92            android:configChanges="orientation|screenSize"
-92-->D:\PasswordManager\app\src\main\AndroidManifest.xml:73:13-59
+92-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:73:13-59
 93            android:windowSoftInputMode="adjustPan" >
-93-->D:\PasswordManager\app\src\main\AndroidManifest.xml:75:13-52
+93-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:75:13-52
 94        </activity>
 95        <activity
-95-->D:\PasswordManager\app\src\main\AndroidManifest.xml:77:9-79:43
+95-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:77:9-79:43
 96            android:name="com.example.accountmanager.AccountInfo"
-96-->D:\PasswordManager\app\src\main\AndroidManifest.xml:79:13-40
+96-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:79:13-40
 97            android:configChanges="orientation|screenSize" />
-97-->D:\PasswordManager\app\src\main\AndroidManifest.xml:78:13-59
+97-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:78:13-59
 98        <activity
-98-->D:\PasswordManager\app\src\main\AndroidManifest.xml:80:9-83:58
+98-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:80:9-83:58
 99            android:name="com.example.accountmanager.CreateData"
-99-->D:\PasswordManager\app\src\main\AndroidManifest.xml:82:13-39
+99-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:82:13-39
 100            android:configChanges="orientation|screenSize"
-100-->D:\PasswordManager\app\src\main\AndroidManifest.xml:81:13-59
+100-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:81:13-59
 101            android:windowSoftInputMode="adjustResize" />
-101-->D:\PasswordManager\app\src\main\AndroidManifest.xml:83:13-55
+101-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:83:13-55
 102        <activity
-102-->D:\PasswordManager\app\src\main\AndroidManifest.xml:84:9-87:55
+102-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:84:9-87:55
 103            android:name="com.example.accountmanager.MainActivity"
-103-->D:\PasswordManager\app\src\main\AndroidManifest.xml:86:13-41
+103-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:86:13-41
 104            android:configChanges="orientation|screenSize"
-104-->D:\PasswordManager\app\src\main\AndroidManifest.xml:85:13-59
+104-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:85:13-59
 105            android:windowSoftInputMode="adjustPan" />
-105-->D:\PasswordManager\app\src\main\AndroidManifest.xml:87:13-52
+105-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:87:13-52
 106
 107        <meta-data
-107-->D:\PasswordManager\app\src\main\AndroidManifest.xml:88:9-90:57
+107-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:88:9-90:57
 108            android:name="preloaded_fonts"
-108-->D:\PasswordManager\app\src\main\AndroidManifest.xml:89:13-43
+108-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:89:13-43
 109            android:resource="@array/preloaded_fonts" />
-109-->D:\PasswordManager\app\src\main\AndroidManifest.xml:90:13-54
+109-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:90:13-54
 110
 111        <service
-111-->D:\PasswordManager\app\src\main\AndroidManifest.xml:92:9-93:71
+111-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:92:9-93:71
 112            android:name="com.example.accountmanager.AsyncWork"
-112-->D:\PasswordManager\app\src\main\AndroidManifest.xml:92:18-43
+112-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:92:18-43
 113            android:permission="android.permission.BIND_JOB_SERVICE" />
-113-->D:\PasswordManager\app\src\main\AndroidManifest.xml:93:13-69
+113-->D:\Github\AccountManager\PasswordManager\app\src\main\AndroidManifest.xml:93:13-69
 114
 115        <activity
 115-->[androidx.biometric:biometric:1.0.1] C:\Users\GEN\.gradle\caches\transforms-2\files-2.1\77532aed9450cf9a64f9388cbb7e6b98\biometric-1.0.1\AndroidManifest.xml:28:9-31:67
