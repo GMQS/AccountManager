@@ -1,9 +1,6 @@
 package com.example.accountmanager;
 
 import android.Manifest;
-import android.content.ClipData;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -12,53 +9,34 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
-import android.os.ParcelFileDescriptor;
 import android.provider.MediaStore;
 import android.provider.Settings;
-import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
-
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileDescriptor;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
-
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
@@ -72,12 +50,9 @@ import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
 import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
-
-import static androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_DRAG;
 import static androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_SWIPE;
 
 public class MainActivity extends AppCompatActivity {
@@ -106,16 +81,16 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences mPref;
     private SharedPreferences.Editor editor;
     private Animation animation;
-    private Animation FabDelete;
     private RecyclerView recyclerView;
     private ArrayList<String> RecycleItems;
     private RecyclerViewAdapter recyclerViewAdapter;
     private MenuItem searchItem;
     private androidx.appcompat.widget.SearchView searchView;
     private String searchWord = "";
-    private ItemTouchHelper itemTouchHelper;
     private boolean delete;
     private Snackbar snackbar;
+
+
 
 
     @Override
@@ -169,9 +144,13 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         RecycleItems = new ArrayList<>();
 
+        Animation fabPop = AnimationUtils.loadAnimation(MainActivity.this, R.anim.fab_pop);
+        fab.startAnimation(fabPop);
+
+
 
         try {
-            FilterValue = Functions.setWallpaper(getFilesDir(), this, Wallpaper, FilterValue, dbAdapter);
+            FilterValue = Functions.setWallpaper(getFilesDir(), this, Wallpaper, dbAdapter);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -182,11 +161,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(View view, int position, String itemData) {
-                editor.putString("PuttingTitle", itemData);
-                editor.apply();
+                Title = itemData;
                 recyclerView.setEnabled(false);
-                fab.setEnabled(false);
-                fab.startAnimation(FabDelete);
+                Intent intent = new Intent(getApplication(), MultiAccountList.class);
+                intent.putExtra("nextActivity", true);
+                intent.putExtra("TITLE_STRING",Title);
+                startActivity(intent);
+                overridePendingTransition(R.anim.left_slide_in, R.anim.dropdown_exit);
             }
 
             @Override
@@ -229,7 +210,6 @@ public class MainActivity extends AppCompatActivity {
 
                                                 @Override
                                                 public void onShown(Snackbar snackbar) {
-
                                                 }
                                             });
                                             snackbar.setAction("元に戻す", v -> {
@@ -360,7 +340,6 @@ public class MainActivity extends AppCompatActivity {
         seekBarDialog = new AlertDialog.Builder(this)
                 .setView(view)
                 .setPositiveButton("変更", (dialogInterface, i) -> {
-                    //dbAdapter.openData();
 
                     if (ChangeOverlay) {
                         dbAdapter.saveWallpaper(null, invProg, "FILTER", false);
@@ -378,7 +357,6 @@ public class MainActivity extends AppCompatActivity {
 
                         dbAdapter.saveWallpaper(null, 127, "FILTER", false);
                     }
-                    //Toast.makeText(MainActivity.this, "オーバーレイを変更しました", Toast.LENGTH_SHORT).show();
                     Snackbar.make(layout, "オーバーレイを変更しました", Snackbar.LENGTH_SHORT).show();
 
 
@@ -429,7 +407,6 @@ public class MainActivity extends AppCompatActivity {
 
                 });
         animation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.add_fab_animation);
-        FabDelete = AnimationUtils.loadAnimation(MainActivity.this, R.anim.delete_fab);
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
@@ -438,12 +415,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-
                 Intent intent = new Intent(getApplication(), CreateData.class);
                 startActivityForResult(intent, RESULT_ADD);
                 overridePendingTransition(R.anim.under_silde_in, R.anim.dropdown_exit);
-                fab.setEnabled(true);
-                recyclerView.setEnabled(true);
+
             }
 
             @Override
@@ -452,33 +427,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        FabDelete.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                Intent intent = new Intent(getApplication(), MultiAccountList.class);
-                intent.putExtra("nextActivity", true);
-                startActivity(intent);
-                overridePendingTransition(R.anim.left_slide_in, R.anim.dropdown_exit);
-                fab.setEnabled(true);
-                recyclerView.setEnabled(true);
-                fab.setVisibility(View.GONE);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
 
         //フローティングボタンタップ時の動作設定
         fab.setOnClickListener(v -> {
-            recyclerView.setEnabled(false);
-            fab.setEnabled(false);
             fab.startAnimation(animation);
         });
 
@@ -499,43 +450,6 @@ public class MainActivity extends AppCompatActivity {
                 super.onScrollStateChanged(recyclerView, newState);
             }
         });
-        //テスト アイテムタッチヘルパーインターフェース
-        //リストのスワップとスワイプ操作の設定
-        itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.Callback() {
-            @Override
-            public int getMovementFlags(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
-                int dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN;
-                int swipeFlags = ItemTouchHelper.RIGHT;
-
-                return makeMovementFlags(dragFlags, swipeFlags);
-            }
-
-            @Override
-            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-                Collections.swap(RecycleItems, viewHolder.getAdapterPosition(), target.getAdapterPosition());
-                recyclerViewAdapter.notifyItemMoved(viewHolder.getAdapterPosition(), target.getAdapterPosition());
-                return true;
-            }
-
-            @Override
-            public void onSwiped(@NonNull final RecyclerView.ViewHolder viewHolder, int direction) {
-            }
-
-            @Override
-            public void onSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState) {
-                super.onSelectedChanged(viewHolder, actionState);
-                if (actionState == ACTION_STATE_SWIPE) {
-                    viewHolder.itemView.setAlpha(0.3f);
-                }
-            }
-
-            @Override
-            public void clearView(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
-                super.clearView(recyclerView, viewHolder);
-                viewHolder.itemView.setAlpha(1.0f);
-            }
-        });
-        //itemTouchHelper.attachToRecyclerView(recyclerView);
     }
 
 
@@ -579,7 +493,6 @@ public class MainActivity extends AppCompatActivity {
 
             ShowcaseConfig config = new ShowcaseConfig();
             config.setDelay(500); // half second between each showcase view
-
             MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(MainActivity.this, SHOWCASE_ID);
             sequence.setConfig(config);
 
@@ -623,17 +536,11 @@ public class MainActivity extends AppCompatActivity {
                                         MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) ==
                                         PackageManager.PERMISSION_GRANTED) {
 
-
                                     // You can use the API that requires the permission.
                                     Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
-                                    Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-                                    Intent chooserIntent = Intent.createChooser(intent, "アプリで開く");
-                                    chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{captureIntent});
-
                                     if (intent.resolveActivity(getPackageManager()) != null) {
-                                        startActivityForResult(chooserIntent, RESULT_PICK_WALLPAPER);
+                                        startActivityForResult(intent, RESULT_PICK_WALLPAPER);
                                     } else {
                                         Toast.makeText(getApplicationContext(), "画像選択アプリケーションが見つかりませんでした", Toast.LENGTH_SHORT).show();
                                     }
@@ -647,13 +554,10 @@ public class MainActivity extends AppCompatActivity {
                                     // continue using your app without granting the permission.
                                     new AlertDialog.Builder(MainActivity.this)
                                             .setMessage("権限がないためストレージの画像ファイルにアクセスできません。権限を許可するためにアプリの設定を開きますか？")
-                                            .setPositiveButton("開く", new DialogInterface.OnClickListener() {
-                                                @Override
-                                                public void onClick(DialogInterface dialogInterface, int i) {
-                                                    String uriString = "package:" + getPackageName();
-                                                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse(uriString));
-                                                    startActivity(intent);
-                                                }
+                                            .setPositiveButton("開く", (dialogInterface13, i) -> {
+                                                String uriString = "package:" + getPackageName();
+                                                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse(uriString));
+                                                startActivity(intent);
                                             })
                                             .setNegativeButton("キャンセル", null)
                                             .show();
@@ -663,14 +567,9 @@ public class MainActivity extends AppCompatActivity {
                                     // The registered ActivityResultCallback gets the result of this request.
                                     new AlertDialog.Builder(MainActivity.this)
                                             .setMessage("画像ファイルにアクセスするために権限を付与してください。この権限は画像ファイルの読み込み以外には使用しません。")
-                                            .setPositiveButton("確認", new DialogInterface.OnClickListener() {
-                                                @Override
-                                                public void onClick(DialogInterface dialogInterface, int i) {
-                                                    ActivityCompat.requestPermissions(MainActivity.this,
-                                                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                                                            REQUEST_CODE);
-                                                }
-                                            })
+                                            .setPositiveButton("確認", (dialogInterface14, i) -> ActivityCompat.requestPermissions(MainActivity.this,
+                                                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                                                    REQUEST_CODE))
                                             .show();
                                 }
 
@@ -763,27 +662,21 @@ public class MainActivity extends AppCompatActivity {
                 //結果データが空でないとき
                 uri = resultData.getData(); //URIに結果データを代入
 
+                if (resultData.getExtras() != null) {
+
+                }
+
 
                 int Width = Wallpaper.getWidth();
                 int Height = Wallpaper.getHeight();
                 Log.d("Viewのサイズ幅", String.valueOf(Wallpaper.getWidth()));
                 Log.d("Viewのサイズ高さ", String.valueOf(Wallpaper.getHeight()));
 
-                //Bitmap bitmap = Functions.decodeSampledBitmapFromFileDescriptor(uri, Width, Height, getContentResolver());
-                //ByteArrayOutputStream baos = new ByteArrayOutputStream(); //ビットマップ画像をプリファレンスで保存するための準備 ファイル出力インスタンスの生成
-                //bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos); //JPEG形式に圧縮
-                //String bitmapStr = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT); //BAOSの文字列データを使用してビットマップ画像を文字列型変数に代入
-
-
                 intent.putExtra("SetWallpaper", true);
                 intent.putExtra("Width", Width);
                 intent.putExtra("Height", Height);
                 intent.putExtra("URI", Objects.requireNonNull(uri).toString());//test
 
-                //容量が大きすぎるためputExtraの制限1MBに引っかかるためプレファレンスXMLに書き出す
-                //editor.putString("BmpStr", bitmapStr);
-
-                //editor.apply();
                 startActivityForResult(intent, RESULT_CHANGE);
             } else if (requestCode == RESULT_PICK_TITLE_HEADER) {
                 Uri uri; //URI変数の定義
@@ -794,11 +687,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("Viewのサイズ幅", String.valueOf(Wallpaper.getWidth()));
                 Log.d("Viewのサイズ高さ", String.valueOf(Wallpaper.getHeight()));
 
-                //Bitmap bitmap = Functions.decodeSampledBitmapFromFileDescriptor(uri, Width, Height, getContentResolver());
-                //ByteArrayOutputStream baos = new ByteArrayOutputStream(); //ビットマップ画像をプリファレンスで保存するための準備 ファイル出力インスタンスの生成
-                //bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos); //JPEG形式に圧縮
-                //String bitmapStr = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT); //BAOSの文字列データを使用してビットマップ画像を文字列型変数に代入
-
                 intent.putExtra("TitleHeader", Title);
                 intent.putExtra("Width", Width);
                 intent.putExtra("URI", Objects.requireNonNull(uri).toString());//test
@@ -808,7 +696,7 @@ public class MainActivity extends AppCompatActivity {
                 if (resultData.getBooleanExtra("CHANGE_WALLPAPER", false)) {
                     Snackbar.make(layout, "壁紙を登録しました", Snackbar.LENGTH_SHORT).show();
                     try {
-                        FilterValue = Functions.setWallpaper(getFilesDir(), this, Wallpaper, FilterValue, dbAdapter);
+                        FilterValue = Functions.setWallpaper(getFilesDir(), this, Wallpaper, dbAdapter);
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
@@ -818,22 +706,12 @@ public class MainActivity extends AppCompatActivity {
             } else if (requestCode == RESULT_ADD) {
                 String titleName = resultData.getStringExtra("TITLE_NAME");
                 if (titleName != null) {
+                    loadTitle(searchWord);
                     Snackbar.make(layout, "[" + titleName + "]を1件追加しました", Snackbar.LENGTH_SHORT).show();
                 }
 
             }
         }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        Animation fabPop = AnimationUtils.loadAnimation(MainActivity.this, R.anim.fab_pop);
-        fab.setVisibility(View.VISIBLE);
-        fab.startAnimation(fabPop);
-
-        loadTitle(searchWord);
     }
 
     private void loadTitle(String query) {

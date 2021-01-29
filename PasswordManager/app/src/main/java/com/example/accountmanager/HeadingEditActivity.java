@@ -41,7 +41,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class HeadingEditActivity extends AppCompatActivity {
 
     private SQL dbAdapter = new SQL(this);
-    private EditText TitleLabel;
     private EditText AccountLabel;
     private EditText MailLabel;
     private EditText PassLabel;
@@ -55,7 +54,6 @@ public class HeadingEditActivity extends AppCompatActivity {
     private SharedPreferences mPref;
     private SharedPreferences.Editor editor;
     private String ID;
-    private String TitleStr;
     private String AccountStr;
     private String MailStr;
     private String PassStr;
@@ -68,7 +66,6 @@ public class HeadingEditActivity extends AppCompatActivity {
     private int MemoVisible = 1;
     private ImageView Wallpaper; //背景用イメージビューの定義
     private Bitmap bmp;
-    private int FilterValue;
 
     private TextWatcher generalTextWatcher = new TextWatcher() {
 
@@ -120,7 +117,7 @@ public class HeadingEditActivity extends AppCompatActivity {
         findViews();
 
         try {
-            Functions.setWallpaper(getFilesDir(),this,Wallpaper,FilterValue,dbAdapter);
+            Functions.setWallpaper(getFilesDir(),this,Wallpaper,dbAdapter);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -133,7 +130,6 @@ public class HeadingEditActivity extends AppCompatActivity {
 
 
         if (ID == null) {
-            //TitleLabel.setText(mPref.getString("TitleLabel", ""));
             AccountLabel.setText(mPref.getString("AccountLabel", "アカウント"));
             MailLabel.setText(mPref.getString("MailLabel", "メールアドレス"));
             PassLabel.setText(mPref.getString("PassLabel", "パスワード"));
@@ -301,9 +297,7 @@ public class HeadingEditActivity extends AppCompatActivity {
                     editor.apply();
                 } else {
                     getLabelString();
-                    //dbAdapter.openData();
                     dbAdapter.changeLabel(AccountStr, AccountVisible, MailStr, MailVisible, PassStr, PassVisible, UrlStr, UrlVisible, MemoStr, MemoVisible, ID);
-                    //dbAdapter.closeData();
                 }
                 finish();
 
@@ -322,7 +316,6 @@ public class HeadingEditActivity extends AppCompatActivity {
 
 
     private void findViews() {
-        //TitleLabel = findViewById(R.id.TitleLabel);
         AccountLabel = findViewById(R.id.AccountLabel);
         MailLabel = findViewById(R.id.MailLabel);
         PassLabel = findViewById(R.id.PassLabel);
@@ -338,12 +331,10 @@ public class HeadingEditActivity extends AppCompatActivity {
     }
 
     private void getLabelInfo() {
-        //dbAdapter.openData();
         Cursor c = dbAdapter.ShowLabelInfo(ID);
         if (c.moveToFirst()) {
 
             do {
-                //TitleLabel.setText(c.getString(1));
                 AccountLabel.setText(c.getString(1));
                 MailLabel.setText(c.getString(2));
                 PassLabel.setText(c.getString(3));
@@ -358,11 +349,9 @@ public class HeadingEditActivity extends AppCompatActivity {
             } while (c.moveToNext());
         }
         c.close();
-        //dbAdapter.closeData();
     }
 
     private void getLabelString() {
-        //TitleStr = TitleLabel.getText().toString();
         AccountStr = AccountLabel.getText().toString();
         MailStr = MailLabel.getText().toString();
         PassStr = PassLabel.getText().toString();

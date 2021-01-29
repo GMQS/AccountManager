@@ -43,6 +43,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.concurrent.Executor;
 
 public class Passcode extends AppCompatActivity implements TextWatcher {
@@ -73,22 +74,16 @@ public class Passcode extends AppCompatActivity implements TextWatcher {
 
 
     private String PIN = "";
-    private String BitmapStrings = "";
-    private int FilterValue = 127;
 
     private String input;
     private String input2;
     private ImageView Wallpaper;
     private int Choice;
     private int theme;
-    //private Animation PopButton;
 
     private SharedPreferences mPref;
     private SharedPreferences.Editor editor;
-    //private int SetFilter;
     private boolean PinChange;
-
-    //private String Register = "";
 
     WelcomeHelper welcomeScreen;
 
@@ -106,11 +101,6 @@ public class Passcode extends AppCompatActivity implements TextWatcher {
         editor = mPref.edit();
         setTheme(mPref.getInt("accent", R.style.NoActionBar));
         theme = mPref.getInt("accent", R.style.NoActionBar);
-        editor.remove("BmpStrFlag");
-        editor.remove("BmpStr");
-        editor.remove("AfterCrop");
-        editor.apply();
-
         Functions.brokenFilesDelete(getFilesDir().getPath(),dbAdapter);
 
 
@@ -139,7 +129,6 @@ public class Passcode extends AppCompatActivity implements TextWatcher {
         Set.setEnabled(false);
         Set.setTextColor(Color.argb(180, 120, 120, 120));
 
-        //SetFilter = mPref.getInt("Filter", 127);
 
         BioAuthlogin = mPref.getBoolean("BioAuth", false);
 
@@ -148,12 +137,12 @@ public class Passcode extends AppCompatActivity implements TextWatcher {
         } else {
             editor.putInt("Choice", 0);
         }
-        editor.commit();
+        editor.apply();
 
         PassInput.addTextChangedListener(this);
 
         try {
-            Functions.setWallpaper(getFilesDir(), this, Wallpaper, FilterValue, dbAdapter);
+            Functions.setWallpaper(getFilesDir(), this, Wallpaper, dbAdapter);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -168,7 +157,7 @@ public class Passcode extends AppCompatActivity implements TextWatcher {
         if (PinChange) {
 
             ActionBar actionBar = getSupportActionBar();
-            actionBar.setDisplayHomeAsUpEnabled(true);
+            Objects.requireNonNull(actionBar).setDisplayHomeAsUpEnabled(true);
             Login = true;
             Change = true;
             Explanation.setText("現在のPINを入力してください");
@@ -201,14 +190,10 @@ public class Passcode extends AppCompatActivity implements TextWatcher {
             }
         });
 
-        Set.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Set.startAnimation(PopButton);
-                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-                PINAuthentication();
-            }
+        Set.setOnClickListener(view -> {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            PINAuthentication();
         });
 
         if (Login && BioAuthlogin && BioAuthSuccess && !PinChange) {
@@ -218,22 +203,16 @@ public class Passcode extends AppCompatActivity implements TextWatcher {
         if (PIN.equals("") && mPref.getBoolean("FirstBoot", true)) {
             new AlertDialog.Builder(Passcode.this)
                     .setMessage("DropBoxクラウドからアカウント情報を復元しますか？")
-                    .setPositiveButton("復元", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            editor.putBoolean("FirstBoot", false);
-                            editor.apply();
-                            Intent intent = new Intent(getApplication(), CloudSync.class);
-                            intent.putExtra("Restore", true);
-                            startActivity(intent);
-                        }
+                    .setPositiveButton("復元", (dialogInterface, i) -> {
+                        editor.putBoolean("FirstBoot", false);
+                        editor.apply();
+                        Intent intent = new Intent(getApplication(), CloudSync.class);
+                        intent.putExtra("Restore", true);
+                        startActivity(intent);
                     })
-                    .setNegativeButton("新規作成", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            editor.putBoolean("FirstBoot", false);
-                            editor.apply();
-                        }
+                    .setNegativeButton("新規作成", (dialogInterface, i) -> {
+                        editor.putBoolean("FirstBoot", false);
+                        editor.apply();
                     })
                     .show();
         }
@@ -246,22 +225,19 @@ public class Passcode extends AppCompatActivity implements TextWatcher {
             new AlertDialog.Builder(Passcode.this)
                     //.setTitle("警告")
                     .setMessage("PINの変更をキャンセルしますか？")
-                    .setPositiveButton("中断", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            Success = false;
-                            Success2 = false;
-                            Change = false;
-                            init();
-                            if (PinChange) {
-                                PinChange = false;
-                                finish();
-                            } else {
-                                Explanation.setText("PINを入力してください");
-                                Set.setText("ログイン");
-                                setTitle("ログイン");
-                                PassLayout.setErrorEnabled(false);
-                            }
+                    .setPositiveButton("中断", (dialogInterface, i) -> {
+                        Success = false;
+                        Success2 = false;
+                        Change = false;
+                        init();
+                        if (PinChange) {
+                            PinChange = false;
+                            finish();
+                        } else {
+                            Explanation.setText("PINを入力してください");
+                            Set.setText("ログイン");
+                            setTitle("ログイン");
+                            PassLayout.setErrorEnabled(false);
                         }
                     })
                     .setNegativeButton("続行", null)
@@ -341,33 +317,27 @@ public class Passcode extends AppCompatActivity implements TextWatcher {
                     new AlertDialog.Builder(Passcode.this)
                             //.setTitle("警告")
                             .setMessage("最初にPINを登録してください。")
-                            .setPositiveButton("確認", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
+                            .setPositiveButton("確認", (dialogInterface, i) -> {
 
-                                }
                             })
                             .show();
                 } else if (Change) {
                     new AlertDialog.Builder(Passcode.this)
                             //.setTitle("警告")
                             .setMessage("PINの変更をキャンセルしますか？")
-                            .setPositiveButton("中断", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    Success = false;
-                                    Success2 = false;
-                                    Change = false;
-                                    init();
-                                    if (PinChange) {
-                                        PinChange = false;
-                                        finish();
-                                    } else {
-                                        Explanation.setText("PINを入力してください");
-                                        Set.setText("ログイン");
-                                        setTitle("ログイン");
-                                        PassLayout.setErrorEnabled(false);
-                                    }
+                            .setPositiveButton("中断", (dialogInterface, i) -> {
+                                Success = false;
+                                Success2 = false;
+                                Change = false;
+                                init();
+                                if (PinChange) {
+                                    PinChange = false;
+                                    finish();
+                                } else {
+                                    Explanation.setText("PINを入力してください");
+                                    Set.setText("ログイン");
+                                    setTitle("ログイン");
+                                    PassLayout.setErrorEnabled(false);
                                 }
                             })
                             .setNegativeButton("続行", null)
@@ -387,10 +357,7 @@ public class Passcode extends AppCompatActivity implements TextWatcher {
                         new AlertDialog.Builder(Passcode.this)
                                 //.setTitle("警告")
                                 .setMessage("端末のアンドロイドバージョンが生体認証をサポートしていません。")
-                                .setPositiveButton("確認", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                    }
+                                .setPositiveButton("確認", (dialogInterface, i) -> {
                                 })
                                 .show();
 
@@ -398,20 +365,14 @@ public class Passcode extends AppCompatActivity implements TextWatcher {
                         new AlertDialog.Builder(Passcode.this)
                                 //.setTitle("警告")
                                 .setMessage("端末に生体認証機能が搭載されていないため利用できません。")
-                                .setPositiveButton("確認", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                    }
+                                .setPositiveButton("確認", (dialogInterface, i) -> {
                                 })
                                 .show();
                     } else if (BioAuthSettingErr | BioAuthAccessErr) {
                         new AlertDialog.Builder(Passcode.this)
                                 //.setTitle("警告")
                                 .setMessage("生体認証が利用できません。端末のセキュリティ設定を確認してください。")
-                                .setPositiveButton("確認", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                    }
+                                .setPositiveButton("確認", (dialogInterface, i) -> {
                                 })
                                 .show();
 
@@ -419,10 +380,7 @@ public class Passcode extends AppCompatActivity implements TextWatcher {
                         new AlertDialog.Builder(Passcode.this)
                                 //.setTitle("警告")
                                 .setMessage("端末のアンドロイドバージョンが生体認証をサポートしていません。")
-                                .setPositiveButton("確認", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                    }
+                                .setPositiveButton("確認", (dialogInterface, i) -> {
                                 })
                                 .show();
 
@@ -430,20 +388,14 @@ public class Passcode extends AppCompatActivity implements TextWatcher {
                         new AlertDialog.Builder(Passcode.this)
                                 //.setTitle("警告")
                                 .setMessage("端末に生体認証機能が搭載されていないため利用できません。")
-                                .setPositiveButton("確認", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                    }
+                                .setPositiveButton("確認", (dialogInterface, i) -> {
                                 })
                                 .show();
                     } else if (BioAuthSettingErr | BioAuthAccessErr) {
                         new AlertDialog.Builder(Passcode.this)
                                 //.setTitle("警告")
                                 .setMessage("生体認証が利用できません。端末のセキュリティ設定を確認してください。")
-                                .setPositiveButton("確認", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                    }
+                                .setPositiveButton("確認", (dialogInterface, i) -> {
                                 })
                                 .show();
                     }
@@ -451,13 +403,9 @@ public class Passcode extends AppCompatActivity implements TextWatcher {
                     //処理をしない
                 } else {
                     new AlertDialog.Builder(Passcode.this)
-                            //.setTitle("警告")
                             .setMessage("最初にPINを登録してください。")
-                            .setPositiveButton("確認", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
+                            .setPositiveButton("確認", (dialogInterface, i) -> {
 
-                                }
                             })
                             .show();
                 }
@@ -472,35 +420,29 @@ public class Passcode extends AppCompatActivity implements TextWatcher {
                         "生体認証でログイン"};
                 new AlertDialog.Builder(Passcode.this)
                         .setTitle("起動時ログイン方法選択")
-                        .setSingleChoiceItems(Title, put, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int button) {
-                                if (button == 0) {
-                                    Choice = 0;
-                                }
-                                if (button == 1) {
-                                    Choice = 1;
-                                }
+                        .setSingleChoiceItems(Title, put, (dialogInterface, button) -> {
+                            if (button == 0) {
+                                Choice = 0;
+                            }
+                            if (button == 1) {
+                                Choice = 1;
                             }
                         })
-                        .setPositiveButton("決定", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                if (Choice == 0) {
-                                    //editor.putBoolean("BioAuth", false);
-                                    editor.putBoolean("BioAuth", false);
-                                    editor.putInt("Choice", 0);
-                                    BioAuthlogin = mPref.getBoolean("BioAuth", false);
-                                }
-                                if (Choice == 1) {
-                                    //editor.putBoolean("BioAuth", true);
-                                    editor.putBoolean("BioAuth", true);
-                                    editor.putInt("Choice", 1);
-                                    BioAuthlogin = mPref.getBoolean("BioAuth", false);
-                                }
-                                editor.apply();
-                                //editor2.commit();
+                        .setPositiveButton("決定", (dialogInterface, i) -> {
+                            if (Choice == 0) {
+                                //editor.putBoolean("BioAuth", false);
+                                editor.putBoolean("BioAuth", false);
+                                editor.putInt("Choice", 0);
+                                BioAuthlogin = mPref.getBoolean("BioAuth", false);
                             }
+                            if (Choice == 1) {
+                                //editor.putBoolean("BioAuth", true);
+                                editor.putBoolean("BioAuth", true);
+                                editor.putInt("Choice", 1);
+                                BioAuthlogin = mPref.getBoolean("BioAuth", false);
+                            }
+                            editor.apply();
+                            //editor2.commit();
                         })
                         .show();
 
@@ -558,17 +500,14 @@ public class Passcode extends AppCompatActivity implements TextWatcher {
         new AlertDialog.Builder(Passcode.this)
                 //.setTitle("警告")
                 .setMessage("PINの変更をキャンセルしますか？")
-                .setPositiveButton("中断", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Success = false;
-                        Success2 = false;
-                        Change = false;
-                        PinChange = false;
-                        PassLayout.setErrorEnabled(false);
-                        init();
-                        finish();
-                    }
+                .setPositiveButton("中断", (dialogInterface, i) -> {
+                    Success = false;
+                    Success2 = false;
+                    Change = false;
+                    PinChange = false;
+                    PassLayout.setErrorEnabled(false);
+                    init();
+                    finish();
                 })
                 .setNegativeButton("続行", null)
                 .show();
@@ -657,32 +596,16 @@ public class Passcode extends AppCompatActivity implements TextWatcher {
                     new AlertDialog.Builder(Passcode.this)
                             //.setTitle("確認")
                             .setMessage("次回から端末の生体認証を使用してログインしますか？")
-                            .setPositiveButton("使用する", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    editor.putBoolean("BioAuth", true);
-                                    editor.putInt("Choice", 1);
-                                    editor.apply();
+                            .setPositiveButton("使用する", (dialogInterface, i) -> {
+                                editor.putBoolean("BioAuth", true);
+                                editor.putInt("Choice", 1);
+                                editor.apply();
 
-                                    AskCloudSync();
+                                AskCloudSync();
 
-                                }
                             })
-                            .setNegativeButton("使用しない", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-
-
-                                    AskCloudSync();
-
-                                }
-                            })
-                            .setOnCancelListener(new DialogInterface.OnCancelListener() {
-                                @Override
-                                public void onCancel(DialogInterface dialogInterface) {
-                                    AskCloudSync();
-                                }
-                            })
+                            .setNegativeButton("使用しない", (dialogInterface, i) -> AskCloudSync())
+                            .setOnCancelListener(dialogInterface -> AskCloudSync())
                             .show();
                 } else {
 
@@ -696,7 +619,7 @@ public class Passcode extends AppCompatActivity implements TextWatcher {
                 init();
                 PassLayout.setError("PINが違います");
             }
-        } else if (Login && !Change) {
+        } else if (!Change) {
             if (PIN.equals(PassInput.getText().toString())) {
                 if (mPref.getBoolean("RestoreOK", false)) {
                     View v = findViewById(R.id.Layout);
@@ -709,36 +632,25 @@ public class Passcode extends AppCompatActivity implements TextWatcher {
                         new AlertDialog.Builder(Passcode.this)
                                 //.setTitle("確認")
                                 .setMessage("次回から端末の生体認証を使用してログインしますか？")
-                                .setPositiveButton("使用する", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        editor.putBoolean("BioAuth", true);
-                                        editor.putInt("Choice", 1);
-                                        editor.apply();
-                                        //editor2.commit();
+                                .setPositiveButton("使用する", (dialogInterface, i) -> {
+                                    editor.putBoolean("BioAuth", true);
+                                    editor.putInt("Choice", 1);
+                                    editor.apply();
+                                    //editor2.commit();
 
 
-                                        //クラウド利用確認ダイアログ
-                                        AskCloudSync();
+                                    //クラウド利用確認ダイアログ
+                                    AskCloudSync();
 
-                                    }
                                 })
-                                .setNegativeButton("使用しない", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                .setNegativeButton("使用しない", (dialogInterface, i) -> {
 
 
-                                        //クラウド利用確認ダイアログ
-                                        AskCloudSync();
+                                    //クラウド利用確認ダイアログ
+                                    AskCloudSync();
 
-                                    }
                                 })
-                                .setOnCancelListener(new DialogInterface.OnCancelListener() {
-                                    @Override
-                                    public void onCancel(DialogInterface dialogInterface) {
-                                        AskCloudSync();
-                                    }
-                                })
+                                .setOnCancelListener(dialogInterface -> AskCloudSync())
                                 .show();
                     } else {
 
@@ -757,7 +669,7 @@ public class Passcode extends AppCompatActivity implements TextWatcher {
                 PassLayout.setError("PINが違います");
                 init();
             }
-        } else if (Change && !Success) {
+        } else if (!Success) {
             if (PIN.equals(PassInput.getText().toString())) {
                 Success = true;
                 init();
@@ -766,12 +678,12 @@ public class Passcode extends AppCompatActivity implements TextWatcher {
                 init();
                 PassLayout.setError("PINが違います");
             }
-        } else if (Success && !Success2) {
+        } else if (!Success2) {
             input2 = PassInput.getText().toString();
             Success2 = true;
             init();
             Explanation.setText("確認のため再度入力してください");
-        } else if (Success2) {
+        } else {
             if (PassInput.getText().toString().equals(input2)) {
                 dbAdapter.savePin(input2, false);
                 Toast.makeText(Passcode.this, "PINを変更しました", Toast.LENGTH_SHORT).show();
@@ -784,8 +696,6 @@ public class Passcode extends AppCompatActivity implements TextWatcher {
                     finish();
                 } else {
                     Explanation.setText("PINを入力してください");
-
-                    //dbAdapter.openData();
                     Cursor cursor = dbAdapter.getPin();
                     if (cursor.moveToFirst()) {
                         PIN = cursor.getString(0);
@@ -804,42 +714,33 @@ public class Passcode extends AppCompatActivity implements TextWatcher {
     private void AskCloudSync() {
         new AlertDialog.Builder(Passcode.this)
                 .setMessage("DropBoxクラウドサービスを使用してアカウント情報の自動バックアップを有効にしますか？")
-                .setPositiveButton("使用する", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        if (mPref.getBoolean("UnlockSetting", false)) {
-                            editor.putBoolean("AutoSync", true);
-                            editor.apply();
-                            Intent intent = new Intent(getApplication(), MainActivity.class);
-                            startActivity(intent);
-                            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                        } else {
-                            Intent intent = new Intent(getApplication(), CloudSync.class);
-                            intent.putExtra("STEP", true);
-                            startActivity(intent);
-                        }
-                        finish();
-                    }
-                })
-                .setNegativeButton("使用しない", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        editor.putBoolean("AutoSync", false);
+                .setPositiveButton("使用する", (dialogInterface, i) -> {
+                    if (mPref.getBoolean("UnlockSetting", false)) {
+                        editor.putBoolean("AutoSync", true);
                         editor.apply();
                         Intent intent = new Intent(getApplication(), MainActivity.class);
                         startActivity(intent);
-                        finish();
-                    }
-                })
-                .setOnCancelListener(new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialogInterface) {
-                        editor.putBoolean("AutoSync", false);
-                        editor.apply();
-                        Intent intent = new Intent(getApplication(), MainActivity.class);
+                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                    } else {
+                        Intent intent = new Intent(getApplication(), CloudSync.class);
+                        intent.putExtra("STEP", true);
                         startActivity(intent);
-                        finish();
                     }
+                    finish();
+                })
+                .setNegativeButton("使用しない", (dialogInterface, i) -> {
+                    editor.putBoolean("AutoSync", false);
+                    editor.apply();
+                    Intent intent = new Intent(getApplication(), MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                })
+                .setOnCancelListener(dialogInterface -> {
+                    editor.putBoolean("AutoSync", false);
+                    editor.apply();
+                    Intent intent = new Intent(getApplication(), MainActivity.class);
+                    startActivity(intent);
+                    finish();
                 })
                 .show();
     }

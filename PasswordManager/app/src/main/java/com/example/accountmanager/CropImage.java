@@ -48,7 +48,6 @@ public class CropImage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         dbAdapter.openData();
         setContentView(R.layout.activity_crop_image);
-        //cropImageView = findViewById(R.id.cropImageView);
         cropView = findViewById(R.id.cropImageView);
         CropButton = findViewById(R.id.CropButton);
         close = findViewById(R.id.close);
@@ -82,7 +81,7 @@ public class CropImage extends AppCompatActivity {
             //追加から飛んできたときの分岐
             if (!CropWP && Title == null) {
                 Functions.tmpImageSave(cropView, getApplicationContext());
-                //Infoから飛んできたときの分岐
+
             } else if (Title != null) {
                 Bitmap bmp;
                 bmp = cropView.getOutput();

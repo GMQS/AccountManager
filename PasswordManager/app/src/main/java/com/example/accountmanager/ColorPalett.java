@@ -27,11 +27,6 @@ public class ColorPalett extends AppCompatActivity implements ColorPickerDialogL
             finish();
         }
     }
-    @Override
-    public void onDestroy(){
-        super.onDestroy();
-        overridePendingTransition(R.anim.flowup_in, R.anim.under_slide_out);
-    }
 
     @Override public void onDialogDismissed(int dialogId) {
     }

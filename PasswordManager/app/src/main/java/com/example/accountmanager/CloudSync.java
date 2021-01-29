@@ -69,7 +69,6 @@ public class CloudSync extends AppCompatActivity {
     private Bitmap bmp; //ビットマップ画像(背景用)の定義
     private SharedPreferences.Editor editor;
     private int theme;
-    private int FilterValue;
     private boolean First = false;
     private boolean Restore = false;
     private boolean Failed = false;
@@ -141,7 +140,7 @@ public class CloudSync extends AppCompatActivity {
         Restore_button.setTextColor(Color.argb(180, 120, 120, 120));
 
         try {
-            Functions.setWallpaper(getFilesDir(),this,Wallpaper,FilterValue,dbAdapter);
+            Functions.setWallpaper(getFilesDir(),this,Wallpaper,dbAdapter);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

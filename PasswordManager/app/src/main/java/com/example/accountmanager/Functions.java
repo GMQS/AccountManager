@@ -11,6 +11,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Environment;
 import android.os.ParcelFileDescriptor;
 import android.text.TextUtils;
 import android.util.Base64;
@@ -39,8 +40,10 @@ import java.io.FileDescriptor;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Random;
 import java.util.zip.Inflater;
 
@@ -50,13 +53,13 @@ public class Functions {
      * @param getFilesDir 画像ファイルのディレクトリ File型
      * @param context     コンテキスト
      * @param wallpaper   壁紙をセットするImageView ImageView型
-     * @param filterValue フィルタ濃度 int型
      * @param dbAdapter   データベースアダプター SQL型
      * @throws FileNotFoundException
      */
 
-    public static int setWallpaper(File getFilesDir, Context context, ImageView wallpaper, int filterValue, SQL dbAdapter) throws FileNotFoundException {
+    public static int setWallpaper(File getFilesDir, Context context, ImageView wallpaper, SQL dbAdapter) throws FileNotFoundException {
 
+        int filterValue = 0;
         Cursor c = dbAdapter.getWallpaper();
         if (c.moveToFirst()) {
             filterValue = c.getInt(0);
@@ -168,17 +171,16 @@ public class Functions {
     }
 
     /**
-     *
      * @param cropView クロップライブラリのビュー
-     * @param context　openFileOutputメソッドを使用するためにContextを使用
+     * @param context  　openFileOutputメソッドを使用するためにContextを使用
      */
-    public static void tmpImageSave(CropView cropView,Context context){
+    public static void tmpImageSave(CropView cropView, Context context) {
         Bitmap bmp;
         bmp = cropView.getOutput();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         try {
-            FileOutputStream fos = context.openFileOutput("tmp_image.jpg",Context.MODE_PRIVATE);
-            bmp.compress(Bitmap.CompressFormat.JPEG,100,baos);
+            FileOutputStream fos = context.openFileOutput("tmp_image.jpg", Context.MODE_PRIVATE);
+            bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
             fos.write(baos.toByteArray());
             fos.close();
         } catch (FileNotFoundException e) {
@@ -235,12 +237,15 @@ public class Functions {
 
         if (files != null) {
             for (int i = 0; i < files.length; i++) {
-                if (!Arrays.asList(array).contains(files[i].getName()) && !files[i].getName().equals("wallpaper.jpg")) {
+                if (!Arrays.asList(array).contains(files[i].getName())
+                        && !files[i].getName().equals("wallpaper.jpg")
+                        && !files[i].getName().contains("_header.jpg")) {
                     files[i].delete();
                 }
             }
         }
     }
+
 
 
 }

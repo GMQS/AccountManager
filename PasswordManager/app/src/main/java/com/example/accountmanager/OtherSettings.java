@@ -41,7 +41,6 @@ public class OtherSettings extends AppCompatActivity {
     private Bitmap bmp;
     private SharedPreferences mPref;
     private SharedPreferences.Editor editor;
-    private int FilterValue;
     private SQL dbAdapter = new SQL(this);
     public static final int RESULT_PICK_WALLPAPER = 1000; //画像変更時のIDの監視用 壁紙
     public static final int RESULT_CHANGE = 3000; //画像変更時のIDの監視用 壁紙
@@ -73,7 +72,7 @@ public class OtherSettings extends AppCompatActivity {
 
 
         try {
-            Functions.setWallpaper(getFilesDir(), this, Wallpaper, FilterValue, dbAdapter);
+            Functions.setWallpaper(getFilesDir(), this, Wallpaper, dbAdapter);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

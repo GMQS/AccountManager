@@ -59,7 +59,6 @@ public class MultiAccountList extends AppCompatActivity {
     private int lastCheck = 0;
     private SharedPreferences mPref;
     private SharedPreferences.Editor editor;
-    private int FilterValue;
     private Animation animation;
     private Animation FabDelete;
     private Intent InfoIntent;
@@ -124,50 +123,6 @@ public class MultiAccountList extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent resultData) {
-        super.onActivityResult(requestCode, resultCode, resultData);
-        if (resultCode == RESULT_OK && resultData != null) {
-            if (requestCode == RESULT_DELETE) {
-
-                if (resultData.getBooleanExtra("DELETE", false)) {
-                    infoDelete = true;
-                    AccountName = resultData.getStringExtra("ACCOUNT");
-                    MailName = resultData.getStringExtra("MAIL");
-                    Pos = resultData.getIntExtra("POSITION", 0);
-                    infoID = resultData.getStringExtra("ID");
-                    infoTitle = resultData.getStringExtra("TITLE");
-                    infoLastCheck = resultData.getIntExtra("LAST_CHECK", 0);
-
-
-                    snackbar = Snackbar.make(layout, "[" + AccountName + "]を1件削除しました", Snackbar.LENGTH_SHORT);
-                    snackbar.addCallback(new Snackbar.Callback() {
-                        @Override
-                        public void onDismissed(Snackbar snackbar, int event) {
-                            deleteDataFromInfo();
-                        }
-
-                        @Override
-                        public void onShown(Snackbar snackbar) {
-
-                        }
-                    });
-                    snackbar.setAction("元に戻す", v -> {
-                        RecycleItems.add(Pos, AccountName);
-                        RecycleMailItems.add(Pos, MailName);
-                        recyclerViewAdapter.notifyItemRangeInserted(Pos, 1);
-                        infoDelete = false;
-                    }).show();
-                }
-            } else if (requestCode == RESULT_ADD) {
-                String accountName = resultData.getStringExtra("ACCOUNT_NAME");
-                if (accountName != null) {
-                    Snackbar.make(layout, "[" + accountName + "]を1件追加しました", Snackbar.LENGTH_SHORT).show();
-                }
-            }
-        }
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -186,7 +141,7 @@ public class MultiAccountList extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         Objects.requireNonNull(actionBar).setDisplayHomeAsUpEnabled(true);
 
-        title = mPref.getString("PuttingTitle", null);
+        title = getIntent().getStringExtra("TITLE_STRING");
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL); //縦方向に設定
@@ -196,7 +151,7 @@ public class MultiAccountList extends AppCompatActivity {
         RecycleMailItems = new ArrayList<>();
 
         try {
-            Functions.setWallpaper(getFilesDir(), this, Wallpaper, FilterValue, dbAdapter);
+            Functions.setWallpaper(getFilesDir(), this, Wallpaper, dbAdapter);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -205,6 +160,10 @@ public class MultiAccountList extends AppCompatActivity {
         setTitle("アカウント選択");
         getsID = new ArrayList<>();
         getsName = new ArrayList<>();
+
+
+        Animation fabPop = AnimationUtils.loadAnimation(MultiAccountList.this, R.anim.fab_pop);
+        fab.startAnimation(fabPop);
 
         recyclerViewAdapter = new RecyclerViewAdapter2(RecycleItems, RecycleMailItems, getApplicationContext()) {
             // onItemClick()をオーバーライドして
@@ -216,9 +175,11 @@ public class MultiAccountList extends AppCompatActivity {
                 sendAccount = itemData;
                 sendMail = mailData;
                 InfoIntent.putExtra("id", ID);
-                recyclerView.setEnabled(false);
-                fab.setEnabled(false);
-                fab.startAnimation(FabDelete);
+                InfoIntent.putExtra("POSITION", sendPos);
+                InfoIntent.putExtra("ACCOUNT", sendAccount);
+                InfoIntent.putExtra("MAIL", sendMail);
+                startActivityForResult(InfoIntent, RESULT_DELETE);
+                overridePendingTransition(R.anim.left_slide_in, R.anim.dropdown_exit);
             }
 
             @Override
@@ -279,7 +240,6 @@ public class MultiAccountList extends AppCompatActivity {
         sequence.start();
 
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.add_fab_animation);
-        FabDelete = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.delete_fab);
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
@@ -287,13 +247,10 @@ public class MultiAccountList extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                editor.putString("PuttingTitle", title);
-                editor.apply();
                 Intent intent = new Intent(getApplication(), AddMultiAccount.class);
+                intent.putExtra("TITLE_STRING",title);
                 startActivityForResult(intent, RESULT_ADD);
                 overridePendingTransition(R.anim.under_silde_in, R.anim.dropdown_exit);
-                fab.setEnabled(true);
-                recyclerView.setEnabled(true);
             }
 
             @Override
@@ -302,6 +259,7 @@ public class MultiAccountList extends AppCompatActivity {
             }
         });
 
+        FabDelete = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.delete_fab);
         FabDelete.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
@@ -310,14 +268,6 @@ public class MultiAccountList extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                fab.setEnabled(true);
-                recyclerView.setEnabled(true);
-                InfoIntent.putExtra("POSITION", sendPos);
-                InfoIntent.putExtra("ACCOUNT", sendAccount);
-                InfoIntent.putExtra("MAIL", sendMail);
-                startActivityForResult(InfoIntent, RESULT_DELETE);
-                overridePendingTransition(R.anim.left_slide_in, R.anim.dropdown_exit);
-                fab.setVisibility(View.GONE);
             }
 
             @Override
@@ -327,9 +277,6 @@ public class MultiAccountList extends AppCompatActivity {
         });
 
         fab.setOnClickListener(v -> {
-
-            recyclerView.setEnabled(false);
-            fab.setEnabled(false);
             fab.startAnimation(animation);
 
         });
@@ -345,6 +292,8 @@ public class MultiAccountList extends AppCompatActivity {
                 }
             }
         });
+
+        loadAccount(true, searchWord);
 
     }
 
@@ -443,23 +392,61 @@ public class MultiAccountList extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        loadAccount(true, searchWord);
-
         if (infoDelete) {
             RecycleItems.remove(Pos);
             RecycleMailItems.remove(Pos);
             recyclerViewAdapter.notifyItemRemoved(Pos);
         }
 
-        fab.setImageResource(R.drawable.ic_baseline_add_24);
-        Animation fabPop = AnimationUtils.loadAnimation(MultiAccountList.this, R.anim.fab_pop);
-        fab.setVisibility(View.VISIBLE);
-        fab.startAnimation(fabPop);
-
         if (mPref.getBoolean("Nothing", false)) {
             finish();
             editor.remove("Nothing");
             editor.apply();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent resultData) {
+        super.onActivityResult(requestCode, resultCode, resultData);
+        if (resultCode == RESULT_OK && resultData != null) {
+            if (requestCode == RESULT_DELETE) {
+
+                if (resultData.getBooleanExtra("DELETE", false)) {
+                    infoDelete = true;
+                    AccountName = resultData.getStringExtra("ACCOUNT");
+                    MailName = resultData.getStringExtra("MAIL");
+                    Pos = resultData.getIntExtra("POSITION", 0);
+                    infoID = resultData.getStringExtra("ID");
+                    infoTitle = resultData.getStringExtra("TITLE");
+                    infoLastCheck = resultData.getIntExtra("LAST_CHECK", 0);
+
+
+                    snackbar = Snackbar.make(layout, "[" + AccountName + "]を1件削除しました", Snackbar.LENGTH_SHORT);
+                    snackbar.addCallback(new Snackbar.Callback() {
+                        @Override
+                        public void onDismissed(Snackbar snackbar, int event) {
+                            deleteDataFromInfo();
+                        }
+
+                        @Override
+                        public void onShown(Snackbar snackbar) {
+
+                        }
+                    });
+                    snackbar.setAction("元に戻す", v -> {
+                        RecycleItems.add(Pos, AccountName);
+                        RecycleMailItems.add(Pos, MailName);
+                        recyclerViewAdapter.notifyItemRangeInserted(Pos, 1);
+                        infoDelete = false;
+                    }).show();
+                }
+            } else if (requestCode == RESULT_ADD) {
+                String accountName = resultData.getStringExtra("ACCOUNT_NAME");
+                if (accountName != null) {
+                    loadAccount(true, searchWord);
+                    Snackbar.make(layout, "[" + accountName + "]を1件追加しました", Snackbar.LENGTH_SHORT).show();
+                }
+            }
         }
     }
 

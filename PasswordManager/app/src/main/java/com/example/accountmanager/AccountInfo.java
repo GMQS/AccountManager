@@ -108,7 +108,6 @@ public class AccountInfo extends AppCompatActivity {
     private int PassVisible;
     private int UrlVisible;
     private int MemoVisible;
-    //private Bitmap bmp; //ビットマップ画像(背景用)の定義
     private String sendTitle, sendAccount, sendMail, sendPass, sendUrl, sendMemo;
     private String outPut = "";
     private String ID;
@@ -141,7 +140,6 @@ public class AccountInfo extends AppCompatActivity {
     private int getWidth;
 
     private File titleHeaderFile;
-    //private File headerFile;
     private File tmpHeaderFile;
 
 
@@ -294,6 +292,8 @@ public class AccountInfo extends AppCompatActivity {
                             }else if (i == 2){
                                 if (CastingList[2].equals("ヘッダーカラーを変更")){
                                     pickColor();
+                                }else if (CastingList[2].equals("ヘッダー画像を削除")){
+                                    deleteHeader();
                                 }
                             }
                         })
@@ -329,14 +329,18 @@ public class AccountInfo extends AppCompatActivity {
 
         WebIcon.setOnClickListener(view -> {
             String url = UrlInfo.getText().toString();
-            if (!UrlInfo.getText().toString().startsWith("https://") && !UrlInfo.getText().toString().startsWith("http://")) {
-                url = "http://" + url;
-            }
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-            if (intent.resolveActivity(getPackageManager()) != null) {
-                startActivity(Intent.createChooser(intent, "ブラウザで開く"));
-            } else {
-                Toast.makeText(getApplicationContext(), "ブラウザアプリケーションが見つかりませんでした", Toast.LENGTH_SHORT).show();
+            if(!url.equals("")) {
+                if (!UrlInfo.getText().toString().startsWith("https://") && !UrlInfo.getText().toString().startsWith("http://")) {
+                    url = "http://" + url;
+                }
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                if (intent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(Intent.createChooser(intent, "ブラウザで開く"));
+                } else {
+                    Toast.makeText(getApplicationContext(), "ブラウザアプリケーションが見つかりませんでした", Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                Toast.makeText(getApplicationContext(), "URLが入力されていません", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -1103,7 +1107,6 @@ public class AccountInfo extends AppCompatActivity {
         final TextView textView = passwordDialogView.findViewById(R.id.password_seekbar_value);
         Spinner spinner = passwordDialogView.findViewById(R.id.password_spinner);
         RandomLength = mPref.getInt("PasswordLength", 15);
-        //ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.password_array, android.R.layout.simple_spinner_item);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_custom, getResources().getStringArray(R.array.password_array));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);

@@ -86,7 +86,6 @@ public class AddMultiAccount extends AppCompatActivity {
     private String strPassword = "";
     private String strUrl = "";
     private String strMemo = "";
-    private String s2;
     private SQL dbAdapter = new SQL(this);
     private String title;
     private ImageView Wallpaper;
@@ -94,7 +93,6 @@ public class AddMultiAccount extends AppCompatActivity {
     private int theme;
     private String BitmapStrings = "";
     private String LastID;
-    private int FilterValue;
     private SharedPreferences mPref;
     private SharedPreferences.Editor editor;
     private TextInputLayout LayoutAccount;
@@ -142,15 +140,14 @@ public class AddMultiAccount extends AppCompatActivity {
         assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        //Spref = getSharedPreferences("MainSave", Context.MODE_PRIVATE);
-        strTitle = mPref.getString("PuttingTitle", "");
+        strTitle = getIntent().getStringExtra("TITLE_STRING");
         assert getSupportActionBar() != null;   //null check
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);   //show back button
         setTitle("アカウント追加");
         findViews();
 
         try {
-            Functions.setWallpaper(getFilesDir(), this, Wallpaper, FilterValue, dbAdapter);
+            Functions.setWallpaper(getFilesDir(), this, Wallpaper, dbAdapter);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

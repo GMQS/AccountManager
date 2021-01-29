@@ -94,7 +94,6 @@ public class CreateData extends AppCompatActivity {
     private ImageView Wallpaper; //背景用イメージビューの定義
     private ImageView VisibleIcon;
     private Bitmap bitmap;
-    private int FilterValue;
     private String AccountLabel;
     private String MailLabel;
     private String PassLabel;
@@ -177,7 +176,7 @@ public class CreateData extends AppCompatActivity {
         findViews();
 
         try {
-            Functions.setWallpaper(getFilesDir(), this, Wallpaper, FilterValue, dbAdapter);
+            Functions.setWallpaper(getFilesDir(), this, Wallpaper, dbAdapter);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
