@@ -62,7 +62,8 @@
         <SwitchPreference
             app:key="BioAuth"
             app:summaryOff="起動時ログインに生体認証を使用しません。"
-            app:summaryOn="起動時ログインに生体認証を使用します。端末が生体認証をサポートしていない場合、自動的にオフになります。"
+            app:summaryOn="起動時ログインに生体認証を使用します。"
+            app:isPreferenceVisible="false"
             app:title="生体認証ログイン" />
         <Preference
             app:key="PIN"
@@ -91,7 +92,12 @@
             app:title="アカウント情報全削除" />
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="テーマ">
+    <PreferenceCategory app:title="外見">
+        <Preference
+            app:key="changeWallpaper"
+            app:summary="壁紙の詳細設定を行います。"
+            app:title="壁紙設定" />
+
         <Preference
             app:key="AccentColor"
             app:summary="テーマカラーを変更します。変更を反映するためにアプリケーションが再起動します。"

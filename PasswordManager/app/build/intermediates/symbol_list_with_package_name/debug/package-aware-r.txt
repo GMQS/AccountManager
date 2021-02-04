@@ -1990,6 +1990,7 @@ id BOTTOM_END
 id BOTTOM_START
 id Backup
 id CTRL
+id Category1
 id Cloudicon
 id Confirm
 id ConstInnerLayout
@@ -2016,6 +2017,13 @@ id FFD50000
 id FFFF6D00
 id FFFFD600
 id FUNCTION
+id Heading1
+id Heading2
+id Heading3
+id Heading4
+id Heading5
+id Heading6
+id Heading7
 id HeadingEdit
 id Layout
 id LayoutAccount
@@ -2042,6 +2050,19 @@ id SHOW_ALL
 id SHOW_PATH
 id SHOW_PROGRESS
 id SYM
+id Summary1
+id Summary2
+id Summary3
+id Summary4
+id Summary5
+id Summary6
+id Summary7
+id Switch1
+id Switch2
+id Switch3
+id Switch4
+id Switch5
+id Switch6
 id TOP_END
 id TOP_START
 id Timestamp
@@ -2107,6 +2128,7 @@ id add
 id alertTitle
 id aligned
 id all
+id alphaSeekbar
 id always
 id animateToEnd
 id animateToStart
@@ -2131,6 +2153,7 @@ id buttonPanel
 id cache_measures
 id cancel_action
 id cancel_button
+id canvas
 id center
 id center_horizontal
 id center_vertical
@@ -2158,6 +2181,8 @@ id clip_vertical
 id clockwise
 id close
 id collapseActionView
+id confirmButton
+id confirmButtonBG
 id confirm_button
 id connect
 id constraint_addAccount
@@ -2189,12 +2214,15 @@ id cropImageView
 id custom
 id customPanel
 id cut
+id dashboard
 id date_picker_actions
 id decelerate
 id decelerateAndComplete
 id decor_content_parent
+id defaultFilter
 id default_activity_button
 id defaultfilter
+id deleteButton
 id deltaRelative
 id dependency_ordering
 id design_bottom_sheet
@@ -2209,6 +2237,7 @@ id disableHome
 id disablePostScroll
 id disableScroll
 id disjoint
+id divider
 id divider6
 id divider7
 id divider_Last
@@ -2284,6 +2313,7 @@ id header
 id header_focus
 id header_title
 id hideable
+id hint01
 id home
 id homeAsUp
 id honorRequest
@@ -2447,6 +2477,7 @@ id scrollIndicatorUp
 id scrollView
 id scrollView2
 id scrollView3
+id scrollView4
 id scrollView5
 id scrollView6
 id scrollable
@@ -2463,6 +2494,7 @@ id search_voice_btn
 id seekBar1
 id seekBar1Value
 id seekbar
+id seekbar7
 id seekbar_value
 id select_dialog_listview
 id selected
@@ -2556,6 +2588,7 @@ id title
 id titleDividerNoCustom
 id title_template
 id toggle
+id toolbar
 id toolbar_layout
 id top
 id topPanel
@@ -2581,6 +2614,7 @@ id uniform
 id unlabeled
 id up
 id useLogo
+id value
 id view
 id view_offset_helper
 id view_tree_lifecycle_owner
@@ -2590,6 +2624,7 @@ id visible
 id visibleIcon
 id visible_removing_fragment_view_tag
 id wallpaper
+id wallpaperButton
 id webIcon
 id wel_background_view
 id wel_bottom_frame
@@ -2674,10 +2709,12 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_account_info
 layout activity_add_multi_account
+layout activity_app_settings
 layout activity_cloud_sync
 layout activity_color_palett
 layout activity_create_data
 layout activity_crop_image
+layout activity_filter_test
 layout activity_heading_edit
 layout activity_main
 layout activity_multi_account_list
@@ -2905,6 +2942,7 @@ string icon_content_description
 string invalid_password
 string invalid_username
 string item_view_role_description
+string large_text
 string login_failed
 string material_clock_display_divider
 string material_clock_toggle_content_description

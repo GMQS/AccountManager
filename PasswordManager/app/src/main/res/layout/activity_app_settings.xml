@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.accountmanager.AppSettingsActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"/>
+
+    <ImageView
+        android:id="@+id/wallpaper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:scaleType="centerCrop"
+        app:srcCompat="@color/colorPrimaryDark" />
+
+    <ImageView
+        android:id="@+id/defaultFilter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:scaleType="centerCrop"
+        android:background="#4D000000"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/Category1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="アカウント情報登録"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/Heading1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="16dp"
+                android:text="アカウント選択"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Category1"
+                android:layout_marginLeft="16dp" />
+
+            <TextView
+                android:id="@+id/Summary1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="14dp"
+                android:text="アカウント名を空欄及び非表示で登録したアカウント情報のアカウント選択画面をスキップします。同一タイトルでアカウントが2つ以上登録されている場合はスキップしません。"
+                android:textColor="#B2FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/Switch1"
+                app:layout_constraintTop_toBottomOf="@+id/Heading1"
+                android:layout_marginLeft="16dp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/Switch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="32dp"
+                app:layout_constraintBottom_toBottomOf="@+id/Summary1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/Summary1" />
+
+            <TextView
+                android:id="@+id/Heading2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="16dp"
+                android:text="入力チェック"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Summary1"
+                android:layout_marginLeft="16dp" />
+
+            <TextView
+                android:id="@+id/Summary2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:text="アカウント登録時にパスワード及びメールアドレスの入力フィールドの空欄とメールアドレスの書式をチェックします。エラーが存在する場合は登録ができません。"
+                android:textColor="#B2FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/Switch2"
+                app:layout_constraintTop_toBottomOf="@+id/Heading2" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/Switch2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="32dp"
+                app:layout_constraintBottom_toBottomOf="@+id/Summary2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/Summary2" />
+
+            <TextView
+                android:id="@+id/Heading3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="16dp"
+                android:text="ラベル設定を保存"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Summary2"
+                android:layout_marginLeft="16dp" />
+
+            <TextView
+                android:id="@+id/Summary3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:text="アカウント情報登録画面のラベルを前回変更した設定で保存します。"
+                android:textColor="#B2FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/Switch3"
+                app:layout_constraintTop_toBottomOf="@+id/Heading3" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/Switch3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="32dp"
+                app:layout_constraintBottom_toBottomOf="@+id/Summary3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/Summary3" />
+
+            <TextView
+                android:id="@+id/Heading4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="16dp"
+                android:text="自動名前変更"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Summary3"
+                android:layout_marginLeft="16dp" />
+
+            <TextView
+                android:id="@+id/Summary4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:text="タイトル及びアカウント名を空欄で登録した場合に自動的に重複しない規定の名前に変更します。"
+                android:textColor="#B2FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/Switch4"
+                app:layout_constraintTop_toBottomOf="@+id/Heading4" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/Switch4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="32dp"
+                app:layout_constraintBottom_toBottomOf="@+id/Summary4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/Summary4" />
+
+            <TextView
+                android:id="@+id/Heading5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="16dp"
+                android:text="URL予測入力"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Summary4"
+                android:layout_marginLeft="16dp" />
+
+            <TextView
+                android:id="@+id/Summary5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:text="複数アカウント追加時のURL入力欄に既に登録済みのURLを自動的に入力します。"
+                android:textColor="#B2FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/Switch5"
+                app:layout_constraintTop_toBottomOf="@+id/Heading5" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/Switch5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="32dp"
+                app:layout_constraintBottom_toBottomOf="@+id/Summary5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/Summary5" />
+
+            <TextView
+                android:id="@+id/Heading6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="16dp"
+                android:text="ランダムパスワード自動入力"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Summary5"
+                android:layout_marginLeft="16dp" />
+
+            <TextView
+                android:id="@+id/Summary6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:text="アカウント情報追加時のパスワード入力欄にランダムパスワードを生成して自動的に入力します。"
+                android:textColor="#B2FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/Switch6"
+                app:layout_constraintTop_toBottomOf="@+id/Heading6" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/Switch6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="32dp"
+                app:layout_constraintBottom_toBottomOf="@+id/Summary6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/Summary6" />
+
+            <TextView
+                android:id="@+id/Heading7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="16dp"
+                android:text="ランダムパスワードの文字数"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Summary6"
+                android:layout_marginLeft="16dp" />
+
+            <TextView
+                android:id="@+id/Summary7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:text="ランダムパスワード生成時の初期文字数を設定します。"
+                android:textColor="#B2FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Heading7" />
+
+            <SeekBar
+                android:id="@+id/seekbar7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/Summary7"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="16dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

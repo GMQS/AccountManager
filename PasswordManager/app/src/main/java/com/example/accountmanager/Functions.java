@@ -1,37 +1,29 @@
 package com.example.accountmanager;
 
+import android.Manifest;
+import android.app.KeyguardManager;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
-import android.os.Environment;
+import android.os.Build;
 import android.os.ParcelFileDescriptor;
 import android.text.TextUtils;
-import android.util.Base64;
 import android.util.Patterns;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.Spinner;
-import android.widget.TextView;
 
-import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
 
 import com.oginotihiro.cropview.CropView;
-
-import net.sqlcipher.IContentObserver;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
@@ -40,43 +32,55 @@ import java.io.FileDescriptor;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.Random;
-import java.util.zip.Inflater;
+
+import DataBase.GetFilter;
+import DataBase.SQL;
+
+import static android.content.Context.KEYGUARD_SERVICE;
 
 public class Functions {
 
     /**
-     * @param getFilesDir 画像ファイルのディレクトリ File型
      * @param context     コンテキスト
      * @param wallpaper   壁紙をセットするImageView ImageView型
-     * @param dbAdapter   データベースアダプター SQL型
      * @throws FileNotFoundException
      */
 
-    public static int setWallpaper(File getFilesDir, Context context, ImageView wallpaper, SQL dbAdapter) throws FileNotFoundException {
+    public static int setWallpaper(final Context context,final ImageView wallpaper) throws FileNotFoundException {
 
-        int filterValue = 0;
-        Cursor c = dbAdapter.getWallpaper();
-        if (c.moveToFirst()) {
-            filterValue = c.getInt(0);
-        }
-        c.close();
-
-        File file = new File(getFilesDir.getPath() + "/wallpaper.jpg");
+        File file = new File(context.getFilesDir().getPath() + "/wallpaper.jpg");
         if (file.exists()) {
             BufferedInputStream bis = new BufferedInputStream(context.openFileInput("wallpaper.jpg"));
             //ビットマップ画像(背景用)の定義
             Bitmap bmp = BitmapFactory.decodeStream(bis);
             wallpaper.setImageBitmap(bmp);
+        }else{
+            Resources r = context.getResources();
+            Bitmap defaultBmp = BitmapFactory.decodeResource(r, R.drawable.header_default);
+            wallpaper.setImageBitmap(defaultBmp);
         }
-        wallpaper.setColorFilter(Color.argb(filterValue, 0, 0, 0));
 
+        int filterValue = new GetFilter(context).getValue();
+        wallpaper.setColorFilter(Color.argb(filterValue, 0, 0, 0));
         return filterValue;
     }
+
+    public static void setTmpWallpaper(Context context, ImageView wallpaper, int filterValue) throws FileNotFoundException {
+
+        File file = new File(context.getFilesDir().getPath() + "/tmp_image.jpg");
+        if (file.exists()) {
+            BufferedInputStream bis = new BufferedInputStream(context.openFileInput("tmp_image.jpg"));
+            //ビットマップ画像(背景用)の定義
+            Bitmap bmp = BitmapFactory.decodeStream(bis);
+            wallpaper.setImageBitmap(bmp);
+        }
+        wallpaper.setColorFilter(Color.argb(filterValue, 0, 0, 0));
+    }
+
+
 
     /**
      * @param target 検査する文字列
@@ -244,6 +248,41 @@ public class Functions {
                 }
             }
         }
+    }
+
+    public static String checkBiometricSupport(Context context) {
+
+        KeyguardManager keyguardManager =
+                (KeyguardManager) context.getSystemService(KEYGUARD_SERVICE);
+
+        PackageManager packageManager = context.getPackageManager();
+        String errorInfo = "使用可能";
+
+        //指紋認証センサーが搭載されていない
+        if (!packageManager.hasSystemFeature(PackageManager.FEATURE_FINGERPRINT)) {
+            errorInfo = "端末のアンドロイドバージョンが生体認証をサポートしていません。";
+            return errorInfo;
+
+        }
+        //アンドロイドのバージョンが指紋認証をサポートしていない
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            errorInfo = "端末に生体認証機能が搭載されていないため利用できません。";
+            return errorInfo;
+        }
+        //セキュリティ設定をしていない
+        if (!keyguardManager.isKeyguardSecure()) {
+            errorInfo = "生体認証が利用できません。端末のセキュリティ設定を確認してください。";
+            return errorInfo;
+        }
+        //指紋認証ログインを許可していない
+        if (ActivityCompat.checkSelfPermission(context,
+                Manifest.permission.USE_BIOMETRIC) !=
+                PackageManager.PERMISSION_GRANTED) {
+            errorInfo = "生体認証ログインが許可されていません。アプリケーションの設定を確認してください。";
+            return errorInfo;
+        }
+        return errorInfo;
+
     }
 
 
