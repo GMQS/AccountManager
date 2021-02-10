@@ -137,11 +137,7 @@ public class AddMultiAccountActivity extends AppCompatActivity {
         setTitle("アカウント追加");
         findViews();
 
-        try {
-            Functions.setWallpaper(this, Wallpaper);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        Functions.setWallpaper(this, Wallpaper);
 
         if (!mPref.getBoolean("Label", false)) {
             editor.putString("AccountLabel", "アカウント");

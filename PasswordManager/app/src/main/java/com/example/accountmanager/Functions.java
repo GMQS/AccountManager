@@ -44,20 +44,25 @@ import static android.content.Context.KEYGUARD_SERVICE;
 public class Functions {
 
     /**
-     * @param context     コンテキスト
-     * @param wallpaper   壁紙をセットするImageView ImageView型
+     * @param context   コンテキスト
+     * @param wallpaper 壁紙をセットするImageView ImageView型
      * @throws FileNotFoundException
      */
 
-    public static int setWallpaper(final Context context,final ImageView wallpaper) throws FileNotFoundException {
+    public static int setWallpaper(final Context context, final ImageView wallpaper) {
 
         File file = new File(context.getFilesDir().getPath() + "/wallpaper.jpg");
         if (file.exists()) {
-            BufferedInputStream bis = new BufferedInputStream(context.openFileInput("wallpaper.jpg"));
+            BufferedInputStream bis = null;
+            try {
+                bis = new BufferedInputStream(context.openFileInput("wallpaper.jpg"));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
             //ビットマップ画像(背景用)の定義
             Bitmap bmp = BitmapFactory.decodeStream(bis);
             wallpaper.setImageBitmap(bmp);
-        }else{
+        } else {
             Resources r = context.getResources();
             Bitmap defaultBmp = BitmapFactory.decodeResource(r, R.drawable.header_default);
             wallpaper.setImageBitmap(defaultBmp);
@@ -79,7 +84,6 @@ public class Functions {
         }
         wallpaper.setColorFilter(Color.argb(filterValue, 0, 0, 0));
     }
-
 
 
     /**
@@ -284,7 +288,6 @@ public class Functions {
         return errorInfo;
 
     }
-
 
 
 }

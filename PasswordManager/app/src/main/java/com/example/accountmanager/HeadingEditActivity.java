@@ -100,11 +100,7 @@ public class HeadingEditActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
         findViews();
 
-        try {
-            Functions.setWallpaper(this,Wallpaper);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        Functions.setWallpaper(this,Wallpaper);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -221,7 +217,6 @@ public class HeadingEditActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
     }
 
 

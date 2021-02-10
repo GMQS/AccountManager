@@ -289,13 +289,72 @@
 
             <SeekBar
                 android:id="@+id/seekbar7"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/Summary7"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
                 android:layout_marginTop="16dp"/>
+
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/seekbar7"
+                />
+
+            <TextView
+                android:id="@+id/Category2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="セキュリティ"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider1"/>
+
+            <TextView
+                android:id="@+id/Heading8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="16dp"
+                android:text="パスワード表示"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Category2"
+                android:layout_marginLeft="16dp" />
+
+            <TextView
+                android:id="@+id/Summary8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="14dp"
+                android:text="第三者に見られるリスクを減らすためにパスワードをマスクします。"
+                android:textColor="#B2FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/Switch8"
+                app:layout_constraintTop_toBottomOf="@+id/Heading8"
+                android:layout_marginLeft="16dp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/Switch8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="32dp"
+                app:layout_constraintBottom_toBottomOf="@+id/Summary8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/Summary8" />
+
+
+
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

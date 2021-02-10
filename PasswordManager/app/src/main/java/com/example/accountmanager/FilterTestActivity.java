@@ -72,7 +72,7 @@ public class FilterTestActivity extends AppCompatActivity {
                         setResult(RESULT_OK,intent);
                         finish();
                     })
-                    .setNegativeButton("キャンセル", (dialogInterface1, i) -> {
+                    .setNegativeButton("保存しない", (dialogInterface1, i) -> {
                         finish();
                     })
                     .show();
@@ -102,11 +102,7 @@ public class FilterTestActivity extends AppCompatActivity {
         tmpFile = new File(getFilesDir().getPath() + "/tmp_image.jpg");
 
 
-        try {
-            filterValue = Functions.setWallpaper(getApplicationContext(), wallpaper);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        filterValue = Functions.setWallpaper(getApplicationContext(), wallpaper);
 
 
         seekBar.setMax(255);

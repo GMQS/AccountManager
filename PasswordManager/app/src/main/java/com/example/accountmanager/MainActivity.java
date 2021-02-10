@@ -31,6 +31,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dropbox.core.v2.files.DeleteErrorException;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
@@ -39,6 +40,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.concurrent.ExecutionException;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -58,7 +60,6 @@ import DataBase.GetFilter;
 import DataBase.SQL;
 import Design.ISetImage;
 import UI.RecyclerViewAdapter;
-import Value.Filter;
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
 import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
@@ -78,12 +79,6 @@ public class MainActivity extends AppCompatActivity {
     private String Title;
     private CoordinatorLayout layout;
     private FloatingActionButton fab;
-    //private int FilterValue;
-    //private int Prog;
-    //private int invProg;
-    //private SeekBar seekBar;
-    //private TextView seekBarValue;
-    //private boolean ChangeOverlay;
     private int Choice;
     private int theme;
     private SharedPreferences mPref;
@@ -97,11 +92,9 @@ public class MainActivity extends AppCompatActivity {
     private String searchWord = "";
     private boolean delete;
     private Snackbar snackbar;
+    private int progressValue;
 
     private Toolbar toolbar;
-
-
-    private Context myContext;
 
     @Override
     public void onBackPressed() {
@@ -136,7 +129,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dbAdapter.openData();
-        myContext = getApplicationContext();
 
 
         mPref = PreferenceManager.getDefaultSharedPreferences(this);
@@ -160,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
         Animation fabPop = AnimationUtils.loadAnimation(MainActivity.this, R.anim.fab_pop);
         fab.startAnimation(fabPop);
 
-        ISetImage.setWallpaper(myContext, Wallpaper).set();
+        Functions.setWallpaper(getApplicationContext(),Wallpaper);
 
         recyclerViewAdapter = new RecyclerViewAdapter(RecycleItems) {
             // onItemClick()をオーバーライドして
@@ -499,9 +491,8 @@ public class MainActivity extends AppCompatActivity {
                                 View view = inflater.inflate(R.layout.seekbar, null);
                                 SeekBar seekBar = view.findViewById(R.id.seekBar1);
                                 TextView seekBarValue = view.findViewById(R.id.seekBar1Value);
-                                int FilterValue = new GetFilter(myContext).getValue();
+                                int FilterValue = new GetFilter(getApplicationContext()).getValue();
                                 //int invFilterValue = 255 - FilterValue;
-
                                 seekBar.setProgress(FilterValue);
                                 seekBarValue.setText(String.valueOf(FilterValue));
 
@@ -513,6 +504,8 @@ public class MainActivity extends AppCompatActivity {
                                             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                                                 Wallpaper.setColorFilter(Color.argb(progress, 0, 0, 0));
                                                 seekBarValue.setText(String.valueOf(progress));
+                                                progressValue = progress;
+
                                             }
 
                                             //ツマミがタッチされた時に呼ばれる
@@ -533,21 +526,21 @@ public class MainActivity extends AppCompatActivity {
                                 AlertDialog seekBarDialog = new AlertDialog.Builder(this)
                                         .setView(view)
                                         .setPositiveButton("変更", (dialog, i) -> {
-                                            dbAdapter.saveWallpaper(null,FilterValue, "FILTER", false);
+                                            dbAdapter.saveWallpaper(null,progressValue, "FILTER", false);
                                             Snackbar.make(layout, "オーバーレイを変更しました", Snackbar.LENGTH_SHORT).show();
                                         })
                                         .setNegativeButton("キャンセル", (dialog, i) -> {
                                             Wallpaper.setColorFilter(Color.argb(FilterValue, 0, 0, 0));
                                         })
-                                        .setOnDismissListener(dialog -> {
+                                        .setOnCancelListener(dialog ->{
                                             Wallpaper.setColorFilter(Color.argb(FilterValue, 0, 0, 0));
                                         })
                                         .create();
 
                                 setThumb(seekBar);
-
                                 Objects.requireNonNull(seekBarDialog.getWindow()).setFlags(0, WindowManager.LayoutParams.FLAG_DIM_BEHIND);
                                 seekBarDialog.show();
+
                             }
 
                             if (which == 2) {
@@ -557,9 +550,9 @@ public class MainActivity extends AppCompatActivity {
 
                                             File file = new File(getFilesDir().getPath() + "/wallpaper.jpg");
                                             if (file.exists()) {
-                                                file.delete();
+                                                    file.delete();
                                             }
-                                            ISetImage.setWallpaper(myContext, Wallpaper).set();
+                                            ISetImage.setWallpaper(getApplicationContext(), Wallpaper).set();
                                         })
                                         .setNegativeButton("キャンセル", (dialogInterface12, i) -> {
                                         })
@@ -623,7 +616,7 @@ public class MainActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent resultData) {
         super.onActivityResult(requestCode, resultCode, resultData);
         Intent intent = new Intent(getApplicationContext(), CropImageActivity.class);
-        ISetImage.setWallpaper(myContext, Wallpaper).set();
+        ISetImage.setWallpaper(getApplicationContext(), Wallpaper).set();
 
         if (resultCode == RESULT_OK && resultData != null) {
             if (requestCode == RESULT_PICK_WALLPAPER) { //結果コードの変動なし　かつ　リザルトOK時に実行
@@ -659,7 +652,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, RESULT_CHANGE);
             } else if (requestCode == RESULT_CHANGE) {
                 if (resultData.getBooleanExtra("CHANGE_WALLPAPER", false)) {
-                    ISetImage.setWallpaper(myContext, Wallpaper).set();
+                    ISetImage.setWallpaper(getApplicationContext(), Wallpaper).set();
                     Snackbar.make(layout, "壁紙を登録しました", Snackbar.LENGTH_SHORT).show();
                 } else if (resultData.getBooleanExtra("CHANGE_TITLE_HEADER", false)) {
                     Snackbar.make(layout, "ヘッダー画像を登録しました", Snackbar.LENGTH_SHORT).show();
@@ -673,13 +666,11 @@ public class MainActivity extends AppCompatActivity {
 
             }
         } else if (requestCode == RESULT_OPTION) {
-            ISetImage.setWallpaper(myContext, Wallpaper).set();
-
+            ISetImage.setWallpaper(getApplicationContext(), Wallpaper).set();
             loadTitle(searchWord);
-
-
         }
     }
+
 
     private void loadTitle(String query) {
         RecycleItems.clear();

@@ -143,12 +143,9 @@ public class CreateDataActivity extends AppCompatActivity {
         if (!title.getText().toString().equals("") || !account.getText().toString().equals("") || !mail.getText().toString().equals("") || !password.getText().toString().equals("") || !url.getText().toString().equals("") || !memo.getText().toString().equals("")) {
             new AlertDialog.Builder(CreateDataActivity.this)
                     .setMessage("登録を中断しますか？")
-                    .setPositiveButton("中断", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            finish();
-                            overridePendingTransition(R.anim.flowup_in, R.anim.under_slide_out);
-                        }
+                    .setPositiveButton("中断", (dialogInterface, i) -> {
+                        finish();
+                        overridePendingTransition(R.anim.flowup_in, R.anim.under_slide_out);
                     })
                     .setNegativeButton("続行", null)
                     .show();
@@ -177,11 +174,7 @@ public class CreateDataActivity extends AppCompatActivity {
         setTitle("アカウント情報登録");
         findViews();
 
-        try {
-            Functions.setWallpaper(this, Wallpaper);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        Functions.setWallpaper(this, Wallpaper);
 
         if (!mPref.getBoolean("Label", false)) {
             editor.putString("AccountLabel", "アカウント");

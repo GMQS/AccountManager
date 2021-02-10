@@ -151,12 +151,7 @@ public class MultiAccountListActivity extends AppCompatActivity {
         RecycleItems = new ArrayList<>();
         RecycleMailItems = new ArrayList<>();
 
-        try {
-            Functions.setWallpaper(this, Wallpaper);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
+        Functions.setWallpaper(this, Wallpaper);
 
 
         setTitle("アカウント選択");

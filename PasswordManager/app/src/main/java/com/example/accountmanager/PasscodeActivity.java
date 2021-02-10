@@ -131,11 +131,7 @@ public class PasscodeActivity extends AppCompatActivity implements TextWatcher {
 
         PassInput.addTextChangedListener(this);
 
-        try {
-            Functions.setWallpaper(this, Wallpaper);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        Functions.setWallpaper(this, Wallpaper);
 
         Cursor cursor = dbAdapter.getPin();
         if (cursor.moveToFirst()) {

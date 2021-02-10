@@ -126,11 +126,7 @@ public class CloudSyncActivity extends AppCompatActivity {
         Backup_button.setTextColor(Color.argb(180, 120, 120, 120));
         Restore_button.setTextColor(Color.argb(180, 120, 120, 120));
 
-        try {
-            Functions.setWallpaper(this,Wallpaper);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        Functions.setWallpaper(this,Wallpaper);
 
 
         String Timestamp = mPref.getString("TimeStamp", "----/--/-- --:--:--");

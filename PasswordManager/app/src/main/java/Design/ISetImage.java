@@ -1,6 +1,7 @@
 package Design;
 
 import android.content.Context;
+import android.media.Image;
 import android.widget.ImageView;
 
 public interface ISetImage {

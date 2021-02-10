@@ -47,11 +47,7 @@ public class AppSettingsActivity extends AppCompatActivity {
 
         Wallpaper = findViewById(R.id.wallpaper);
 
-        try {
-            Functions.setWallpaper(this, Wallpaper);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        Functions.setWallpaper(this, Wallpaper);
 
     }
 
@@ -59,11 +55,7 @@ public class AppSettingsActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent resultData) {
         super.onActivityResult(requestCode, resultCode, resultData);
         if (resultCode == RESULT_OK && resultData != null) {
-            try {
-                Functions.setWallpaper( this, Wallpaper);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+            Functions.setWallpaper( this, Wallpaper);
         }
 
 

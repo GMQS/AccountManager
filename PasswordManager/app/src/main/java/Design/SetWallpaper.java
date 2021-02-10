@@ -6,10 +6,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.widget.ImageView;
+
 import com.example.accountmanager.R;
+
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
+
 import DataBase.GetFilter;
 import File.IO.CreateFile;
 import File.IO.CreateWallpaperFile;
@@ -17,7 +20,7 @@ import File.IO.CreateWallpaperFile;
 /**
  * ImageViewに画像ファイルをセットするクラス
  */
-class SetWallpaper implements ISetImage{
+class SetWallpaper implements ISetImage {
 
     private Context context;
     private ImageView wallpaper;
@@ -25,7 +28,8 @@ class SetWallpaper implements ISetImage{
 
     /**
      * コンストラクタ
-     * @param context コンテキスト
+     *
+     * @param context   コンテキスト
      * @param wallpaper セットするImageView
      */
     public SetWallpaper(Context context, ImageView wallpaper) {
@@ -42,6 +46,7 @@ class SetWallpaper implements ISetImage{
     public void set() {
         CreateFile createFile = new CreateWallpaperFile(context);
         File file = createFile.create();
+        wallpaper.setColorFilter(Color.argb(new GetFilter(context).getValue(), 0, 0, 0));
         if (file.exists()) {
             BufferedInputStream bis = null;
             try {
@@ -53,10 +58,9 @@ class SetWallpaper implements ISetImage{
             wallpaper.setImageBitmap(bmp);
             return;
         }
-        Resources r = context.getResources();
-        Bitmap defaultBmp = BitmapFactory.decodeResource(r, R.drawable.header_default);
-        wallpaper.setImageBitmap(defaultBmp);
-        wallpaper.setColorFilter(Color.argb(new GetFilter(context).getValue(), 0, 0, 0));
+            Resources r = context.getResources();
+            Bitmap defaultBmp = BitmapFactory.decodeResource(r, R.drawable.header_default);
+            wallpaper.setImageBitmap(defaultBmp);
     }
 
 }

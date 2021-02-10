@@ -1991,6 +1991,7 @@ id BOTTOM_START
 id Backup
 id CTRL
 id Category1
+id Category2
 id Cloudicon
 id Confirm
 id ConstInnerLayout
@@ -2024,6 +2025,7 @@ id Heading4
 id Heading5
 id Heading6
 id Heading7
+id Heading8
 id HeadingEdit
 id Layout
 id LayoutAccount
@@ -2057,12 +2059,14 @@ id Summary4
 id Summary5
 id Summary6
 id Summary7
+id Summary8
 id Switch1
 id Switch2
 id Switch3
 id Switch4
 id Switch5
 id Switch6
+id Switch8
 id TOP_END
 id TOP_START
 id Timestamp
@@ -2238,6 +2242,7 @@ id disablePostScroll
 id disableScroll
 id disjoint
 id divider
+id divider1
 id divider6
 id divider7
 id divider_Last
