@@ -134,7 +134,7 @@ public class AddMultiAccountActivity extends AppCompatActivity {
         strTitle = getIntent().getStringExtra("TITLE_STRING");
         assert getSupportActionBar() != null;   //null check
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);   //show back button
-        setTitle("アカウント追加");
+        setTitle("登録");
         findViews();
 
         Functions.setWallpaper(this, Wallpaper);

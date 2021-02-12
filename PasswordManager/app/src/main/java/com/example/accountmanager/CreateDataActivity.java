@@ -170,8 +170,8 @@ public class CreateDataActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        setTitle("アカウント情報登録");
+        Objects.requireNonNull(actionBar).setDisplayHomeAsUpEnabled(true);
+        setTitle("登録");
         findViews();
 
         Functions.setWallpaper(this, Wallpaper);

@@ -7,18 +7,6 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/wallpaper"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="56dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_toolbar6"
-        app:srcCompat="@color/colorPrimaryDark" />
-
-    <ImageView
         android:id="@+id/defaultfilter"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -150,6 +138,14 @@
                     android:layout_height="wrap_content"
                     android:hint="パスワード"
                     android:textColor="@color/colorText" />
+
+                <ImageView
+                    android:id="@+id/wallpaper"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="56dp"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@color/colorPrimaryDark" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <ImageView

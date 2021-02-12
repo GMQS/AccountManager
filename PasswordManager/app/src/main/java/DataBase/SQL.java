@@ -15,7 +15,7 @@ import net.sqlcipher.database.SQLiteOpenHelper; //SQLChipher暗号化用ライ�
 
 public class SQL {
 
-
+    private static final int DB_VERSION = 5;
     private SharedPreferences mPref;
     private SharedPreferences.Editor editor;
     private static final String DB_NAME = "AccountDB.db";
@@ -23,7 +23,6 @@ public class SQL {
     private static final String DB_LABEL_TABLE = "labeldb";
     private static final String DB_PIN_TABLE = "pintabledb";
     private static final String DB_WALLPAPER_TABLE = "wallpapertabledb";
-    private static final int DB_VERSION = 5;
     public static final String _ID = "_id";
     public static final String COL_TITLE = "title";
     public static final String COL_ACCOUNT = "account";
