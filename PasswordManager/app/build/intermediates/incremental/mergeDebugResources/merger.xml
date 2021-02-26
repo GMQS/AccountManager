@@ -6970,10 +6970,31 @@
         <item>タイトルヘッダー画像登録</item>
         <item>削除</item>
     </string-array><string-array name="password_array">
-        <item>英字と数字</item>
-        <item>英字と数字と記号</item>
+        <item>英字 + 数字</item>
+        <item>英字 + 数字 + 記号</item>
         <item>数字のみ</item>
-
+    </string-array><string-array name="fieldSummary">
+        <item>メールアドレス</item>
+        <item>パスワード</item>
+        <item>ID</item>
+        <item>メモ</item>
+        <item>URL</item>
+        <item>カスタム</item>
+    </string-array><string-array name="options">
+        <item>削除</item>
+        <item>フィールド名を編集</item>
+    </string-array><string-array name="edit">
+        <item>メールアドレス</item>
+        <item>パスワード</item>
+        <item>ID</item>
+        <item>メモ</item>
+        <item>URL</item>
+        <item>カスタム</item>
+    </string-array><string-array name="fieldType">
+        <item>メールアドレス</item>
+        <item>パスワード</item>
+        <item>文字</item>
+        <item>URL</item>
     </string-array></file><file path="D:\Github\AccountManager\PasswordManager\app\src\main\res\values\arrays.xml" qualifiers=""><integer-array name="pref_values">
         <item>@style/NoActionBar</item>
         <item>@style/NoActionBarCyan</item>
@@ -7321,7 +7342,7 @@
         <item name="dialogCornerRadius">12dp</item>
     </style><style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/><style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/><style name="CollapsedAppBar" parent="@android:style/TextAppearance">
         <item name="android:textSize">28sp</item>
-    </style></file><file name="backup_rules" path="D:\Github\AccountManager\PasswordManager\app\src\main\res\xml\backup_rules.xml" qualifiers="" type="xml"/><file name="root_preferences" path="D:\Github\AccountManager\PasswordManager\app\src\main\res\xml\root_preferences.xml" qualifiers="" type="xml"/></source><source path="D:\Github\AccountManager\PasswordManager\app\build\generated\res\rs\debug"/><source path="D:\Github\AccountManager\PasswordManager\app\build\generated\res\resValues\debug"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\Github\AccountManager\PasswordManager\app\src\debug\res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug" generated-set="debug$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\Github\AccountManager\PasswordManager\app\src\debug\res"/></dataSet><mergedItems><configuration qualifiers=""><declare-styleable name="AlertDialog">
+    </style></file><file name="backup_rules" path="D:\Github\AccountManager\PasswordManager\app\src\main\res\xml\backup_rules.xml" qualifiers="" type="xml"/><file name="root_preferences" path="D:\Github\AccountManager\PasswordManager\app\src\main\res\xml\root_preferences.xml" qualifiers="" type="xml"/><file name="activity_data_registration" path="D:\Github\AccountManager\PasswordManager\app\src\main\res\layout\activity_data_registration.xml" qualifiers="" type="layout"/><file name="custom_field_dialog" path="D:\Github\AccountManager\PasswordManager\app\src\main\res\layout\custom_field_dialog.xml" qualifiers="" type="layout"/><file name="field_options" path="D:\Github\AccountManager\PasswordManager\app\src\main\res\menu\field_options.xml" qualifiers="" type="menu"/><file name="filed_options_2" path="D:\Github\AccountManager\PasswordManager\app\src\main\res\menu\filed_options_2.xml" qualifiers="" type="menu"/></source><source path="D:\Github\AccountManager\PasswordManager\app\build\generated\res\rs\debug"/><source path="D:\Github\AccountManager\PasswordManager\app\build\generated\res\resValues\debug"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\Github\AccountManager\PasswordManager\app\src\debug\res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug" generated-set="debug$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\Github\AccountManager\PasswordManager\app\src\debug\res"/></dataSet><mergedItems><configuration qualifiers=""><declare-styleable name="AlertDialog">
         <attr name="android:layout"/>
         <attr format="reference" name="buttonPanelSideLayout"/>
         <attr format="reference" name="listLayout"/>

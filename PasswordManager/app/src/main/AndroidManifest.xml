@@ -25,7 +25,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/NoActionBar">
-        <activity android:name=".AppSettingsActivity"></activity>
+        <activity android:name=".PasscodeActivity" />
+        <activity android:name=".AppSettingsActivity" />
         <activity android:name=".FilterTestActivity" />
         <activity
             android:name=".HeadingEditActivity"
@@ -61,7 +62,7 @@
             android:configChanges="orientation|screenSize"
             android:theme="@style/CustomWelcomeScreenTheme" />
         <activity
-            android:name=".PasscodeActivity"
+            android:name=".DataRegistration"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name"
             android:theme="@style/SplashTheme"

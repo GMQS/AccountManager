@@ -24,7 +24,7 @@
             app:title="ラベル設定を保存" />
 
         <SwitchPreference
-            app:defaultValue="false"
+            app:defaultValue="true"
             app:key="AutoName"
             app:summaryOff="タイトル及びアカウント名を空欄で登録した場合に空欄のまま登録します。"
             app:summaryOn="タイトル及びアカウント名を空欄で登録した場合に自動的に重複しない規定の名前に変更します。"

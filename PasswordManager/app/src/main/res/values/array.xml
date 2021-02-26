@@ -18,10 +18,39 @@
     </string-array>
 
     <string-array name="password_array">
-        <item>英字と数字</item>
-        <item>英字と数字と記号</item>
+        <item>英字 + 数字</item>
+        <item>英字 + 数字 + 記号</item>
         <item>数字のみ</item>
+    </string-array>
 
+    <string-array name = "fieldSummary">
+        <item>メールアドレス</item>
+        <item>パスワード</item>
+        <item>ID</item>
+        <item>メモ</item>
+        <item>URL</item>
+        <item>カスタム</item>
+    </string-array>
+
+    <string-array name = "edit">
+        <item>メールアドレス</item>
+        <item>パスワード</item>
+        <item>ID</item>
+        <item>メモ</item>
+        <item>URL</item>
+        <item>カスタム</item>
+    </string-array>
+
+    <string-array name = "options">
+        <item>削除</item>
+        <item>フィールド名を編集</item>
+    </string-array>
+
+    <string-array name = "fieldType">
+        <item>メールアドレス</item>
+        <item>パスワード</item>
+        <item>文字</item>
+        <item>URL</item>
     </string-array>
 
 

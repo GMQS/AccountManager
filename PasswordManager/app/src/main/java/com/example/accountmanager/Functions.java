@@ -1,11 +1,14 @@
 package com.example.accountmanager;
 
 import android.Manifest;
+import android.app.Activity;
+import android.app.Application;
 import android.app.KeyguardManager;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -17,10 +20,19 @@ import android.os.Build;
 import android.os.ParcelFileDescriptor;
 import android.text.TextUtils;
 import android.util.Patterns;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.Spinner;
+import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 
 import com.oginotihiro.cropview.CropView;
@@ -288,6 +300,26 @@ public class Functions {
         return errorInfo;
 
     }
+
+    public static int convertDP(Context context,int dp_value) {
+        float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dp_value * scale + 0.5f);
+    }
+
+    public static void setRippleEffect(Context context,ImageView... icon) {
+        final TypedValue typedValue = new TypedValue();
+        context.getTheme().resolveAttribute(android.R.attr.selectableItemBackground, typedValue, true);
+        for (ImageView iv : icon) {
+            iv.setClickable(true);
+            if (typedValue.resourceId != 0) {
+                iv.setBackgroundResource(typedValue.resourceId);
+            } else {
+                iv.setBackgroundResource(typedValue.data);
+            }
+        }
+    }
+
+
 
 
 }

@@ -93,7 +93,11 @@ array com_google_android_gms_fonts_certs_dev
 array com_google_android_gms_fonts_certs_prod
 array crypto_fingerprint_fallback_prefixes
 array crypto_fingerprint_fallback_vendors
+array edit
+array fieldSummary
+array fieldType
 array hide_fingerprint_instantly_prefixes
+array options
 array password_array
 array pref_options
 array pref_values
@@ -2108,6 +2112,9 @@ id accessibility_custom_action_6
 id accessibility_custom_action_7
 id accessibility_custom_action_8
 id accessibility_custom_action_9
+id accountEditIcon
+id accountEditText
+id accountInputLayout
 id action0
 id action_bar
 id action_bar_activity_content
@@ -2226,6 +2233,7 @@ id decor_content_parent
 id defaultFilter
 id default_activity_button
 id defaultfilter
+id delete
 id deleteButton
 id deltaRelative
 id dependency_ordering
@@ -2290,6 +2298,7 @@ id fab_
 id fab_expand_menu_button
 id fab_label
 id fade
+id fieldTitle
 id fill
 id fill_horizontal
 id fill_vertical
@@ -2330,6 +2339,8 @@ id ignore
 id ignoreRequest
 id image
 id info
+id infoText1
+id infoText2
 id invisible
 id inward
 id italic
@@ -2463,6 +2474,7 @@ id rectangles
 id recycler_view
 id recyclerview1
 id regular
+id rename
 id reverseSawtooth
 id right
 id rightToLeft
@@ -2501,6 +2513,7 @@ id seekBar1Value
 id seekbar
 id seekbar7
 id seekbar_value
+id selectInputSpinner
 id select_dialog_listview
 id selected
 id selection_type
@@ -2591,6 +2604,8 @@ id textinput_suffix_text
 id time
 id title
 id titleDividerNoCustom
+id titleEditText
+id titleInputLayout
 id title_template
 id toggle
 id toolbar
@@ -2719,6 +2734,7 @@ layout activity_cloud_sync
 layout activity_color_palett
 layout activity_create_data
 layout activity_crop_image
+layout activity_data_registration
 layout activity_filter_test
 layout activity_heading_edit
 layout activity_main
@@ -2734,6 +2750,7 @@ layout cpv_preference_circle_large
 layout cpv_preference_square
 layout cpv_preference_square_large
 layout custom_dialog
+layout custom_field_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar
@@ -2865,6 +2882,8 @@ layout wel_fragment_parallax_full_screen
 layout wel_fragment_title
 menu account_list
 menu cloud_menu
+menu field_options
+menu filed_options_2
 menu label_edit
 menu last
 menu menu
